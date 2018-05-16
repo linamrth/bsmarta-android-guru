@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BSmart Guru</string>
+    <string name="title_activity_buttom_navigation">ButtomNavigation</string>
+    <string name="title_jadwal">Jadwal</string>
+    <string name="title_siswa">Siswa Pribadi</string>
+    <string name="title_semuasiswa">Semua Siswa</string>
+    <string name="title_profil">Profil</string>
+    <string name="satu">Satu</string>
+    <string name="dua">Dua</string>
+    <string name="tiga">Tiga</string>
+</resources>

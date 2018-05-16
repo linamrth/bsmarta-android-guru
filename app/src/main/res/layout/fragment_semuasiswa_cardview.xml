@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    xmlns:xmnls="http://schemas.android.com/apk/res-auto"
+    xmlns:cv="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragmentsiswa">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_margin="3dp"
+        cv:cardCornerRadius="4dp"
+        cv:elevation="14dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvnama"
+                android:gravity="center"
+                android:textSize="14dp"
+                android:fontFamily="@font/nunitosemibold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvprogramlevel"
+                android:layout_below="@+id/tvnama"
+                android:textSize="13dp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/nunitosemibold"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

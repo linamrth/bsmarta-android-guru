@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/graylight"
+    android:orientation="vertical"
+    tools:context=".Fitur.Siswa.InputrapotActivity">
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nmguru"
+                android:hint="Nama Guru"
+                android:inputType="text"
+                android:textColorHint="@color/white"
+                android:fontFamily="@font/nunitosemibold"
+                android:layout_marginBottom="8dp"
+                android:textSize="15dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/materi"
+                android:hint="Materi"
+                android:inputType="text"
+                android:textColorHint="@color/white"
+                android:fontFamily="@font/nunitosemibold"
+                android:layout_marginBottom="8dp"
+                android:textSize="15dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hasil"
+                android:hint="Hasil Belajar"
+                android:inputType="text"
+                android:textColorHint="@color/white"
+                android:fontFamily="@font/nunitosemibold"
+                android:layout_marginBottom="8dp"
+                android:textSize="15dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/halketercapaian"
+                android:hint="Halaman Ketercapaian"
+                android:inputType="text"
+                android:textColorHint="@color/white"
+                android:fontFamily="@font/nunitosemibold"
+                android:layout_marginBottom="8dp"
+                android:textSize="15dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/catatanguru"
+                android:hint="Catatan Guru"
+                android:inputType="text"
+                android:textColorHint="@color/white"
+                android:fontFamily="@font/nunitosemibold"
+                android:layout_marginBottom="8dp"
+                android:textSize="15dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rewardhasil"
+                android:text="Reward Hasil"
+                android:fontFamily="@font/nunitosemibold"
+                android:layout_marginBottom="8dp"
+                android:textSize="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cbrewardhasil1"
+                    android:text="@string/satu"
+                    android:fontFamily="@font/nunitosemibold"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cbrewardhasil2"
+                    android:text="@string/dua"
+                    android:fontFamily="@font/nunitosemibold"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cbrewardhasil3"
+                    android:text="@string/tiga"
+                    android:fontFamily="@font/nunitosemibold"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rewarsikap"
+                android:text="Reward Sikap"
+                android:fontFamily="@font/nunitosemibold"
+                android:layout_marginBottom="8dp"
+                android:textSize="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cbrewardsikap1"
+                    android:text="@string/satu"
+                    android:fontFamily="@font/nunitosemibold"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cbrewardsikap2"
+                    android:text="@string/dua"
+                    android:fontFamily="@font/nunitosemibold"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cbrewardsikap3"
+                    android:text="@string/tiga"
+                    android:fontFamily="@font/nunitosemibold"/>
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="Input Nilai"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/nunitosemibold"/>
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

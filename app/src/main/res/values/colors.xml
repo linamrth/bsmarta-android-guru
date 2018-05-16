@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#05c3f9</color>
+    <color name="colorPrimaryDark">#0691b8</color>
+    <color name="colorAccent">#05c3f9</color>
+    <color name="white">#ffffff</color>
+    <color name="graylight">#fafafa</color>
+    <color name="abu">#CCCCCC</color>
+    <color name="startblue">#2D537B</color>
+    <color name="endblue">#559BE5</color>
+    <color name="kuning">#FFDE30</color>
+    <color name="merah">#FF2C02</color>
+    <color name="biru">#5081E5</color>
+</resources>
