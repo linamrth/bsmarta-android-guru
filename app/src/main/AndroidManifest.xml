@@ -41,8 +41,12 @@
         <activity
             android:name=".Fitur.SemuaSiswa.ViewrapotActivity"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".Fitur.Siswa.LihatrapotActivity" />
-        <activity android:name=".Fitur.SemuaSiswa.InputRapotActivity"></activity>
+        <activity
+            android:name=".Fitur.Siswa.LihatrapotActivity"
+            android:theme="@style/AppTheme2"/>
+        <activity
+            android:name=".Fitur.SemuaSiswa.InputRapotActivity"
+            android:theme="@style/AppTheme2" />
     </application>
 
 </manifest>

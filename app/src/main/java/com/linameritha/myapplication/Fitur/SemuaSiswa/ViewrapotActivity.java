@@ -1,9 +1,11 @@
 package com.linameritha.myapplication.Fitur.SemuaSiswa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,23 +14,69 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.linameritha.myapplication.Api.ApiServices;
+import com.linameritha.myapplication.Model.SemuaSiswa.ViewrapotModel;
 import com.linameritha.myapplication.R;
 
-public class ViewrapotActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    ListView list;
-    String titles[] = {"Pertemuan Ke", "Tanggal", "Nama guru", "Materi Pembelajaran", "Hasil Belajar", "Halaman Ketercapaian", "Catatan Guru", "Reward Hasil", "Reward Sikap"};
-    String deskripsi[] = {"1", "Jumat, 27 April 2018", "Shifwatin", "Membaca huruf vokal aiueo", "Baik sekali", "6", "Tingkatkan terus belajarnya", "1", "2"};
+public class ViewrapotActivity extends AppCompatActivity {
+    private ViewrapotModel viewrapotModel;
+    private TextView tvNama, tvKelas, tvProgram, tvLevel;
+    private TextView tvNamaguru, tvTanggal, tvPertemuanke;
+    private TextView tvMateri, tvHalamanketercapaian, tvHasil, tvCatatanguru, tvRewardhasil, tvRewardsikap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewrapot);
-        setTitle("Hasil Belajar");
+        setTitle("Rapot Kursus");
 
-        list = (ListView) findViewById(R.id.lv);
-        ViewrapotAdapter viewrapotAdapter = new ViewrapotAdapter(getApplicationContext(), titles, deskripsi);
-        list.setAdapter(viewrapotAdapter);
+        Intent intent = getIntent();
+        Integer idgenerate = intent.getIntExtra("idgenerate", 0);
+        Log.d("terserah", String.valueOf(idgenerate));
+
+        tvNama = (TextView) findViewById(R.id.tvnama);
+        tvKelas = (TextView) findViewById(R.id.tvkelas);
+        tvProgram = (TextView) findViewById(R.id.tvprogram);
+        tvLevel = (TextView) findViewById(R.id.tvlevel);
+        tvNamaguru = (TextView) findViewById(R.id.tvnamaguru);
+        tvTanggal = (TextView) findViewById(R.id.tvtanggal);
+        tvPertemuanke = (TextView) findViewById(R.id.tvpertemuanke);
+        tvMateri = (TextView) findViewById(R.id.tvmateri);
+        tvHalamanketercapaian = (TextView) findViewById(R.id.tvhalamanketercapaian);
+        tvHasil = (TextView) findViewById(R.id.tvhasil);
+        tvCatatanguru = (TextView) findViewById(R.id.tvcatatanguru);
+        tvRewardhasil = (TextView) findViewById(R.id.tvrewardhasil);
+        tvRewardsikap = (TextView) findViewById(R.id.tvrewardsikap);
+
+        ApiServices.services_get.getViewrapotsemuasiswa(idgenerate).enqueue(new Callback<ViewrapotModel>() {
+            @Override
+            public void onResponse(Call<ViewrapotModel> call, Response<ViewrapotModel> response) {
+                viewrapotModel = response.body();
+
+                tvNama.setText(viewrapotModel.getNamalengkap());
+                tvKelas.setText(viewrapotModel.getKelas());
+                tvProgram.setText(viewrapotModel.getNamaprogram());
+                tvLevel.setText("Level " + viewrapotModel.getLevel());
+                tvNamaguru.setText(viewrapotModel.getNamaguru());
+                tvTanggal.setText(viewrapotModel.getTanggal());
+                tvPertemuanke.setText(viewrapotModel.getPertemuanke());
+                tvMateri.setText(viewrapotModel.getMateri());
+                tvHalamanketercapaian.setText("Halaman " + viewrapotModel.getHalamanketercapaian());
+                tvHasil.setText(viewrapotModel.getHasil());
+                tvCatatanguru.setText(viewrapotModel.getCatatanguru());
+                tvRewardhasil.setText("Bintang " + viewrapotModel.getRewardhasil());
+                tvRewardsikap.setText("Bintang " + viewrapotModel.getRewardsikap());
+            }
+
+            @Override
+            public void onFailure(Call<ViewrapotModel> call, Throwable t) {
+
+            }
+        });
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

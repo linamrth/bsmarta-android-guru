@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 
-import com.linameritha.myapplication.Fitur.SemuaSiswa.ViewrapotAdapter;
 import com.linameritha.myapplication.Model.Jadwal.JadwalModel;
 import com.linameritha.myapplication.R;
 
