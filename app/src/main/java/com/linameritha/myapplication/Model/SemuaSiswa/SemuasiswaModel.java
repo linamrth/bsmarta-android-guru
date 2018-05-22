@@ -1,60 +1,62 @@
 package com.linameritha.myapplication.Model.SemuaSiswa;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class SemuasiswaModel {
-    private String nama;
-    private String programlevel;
-    private String tanggal;
-    private String namaguru;
-    private String statusrapot;
+    @SerializedName("namalengkap")
+    @Expose
+    private String namalengkap;
+    @SerializedName("kelas")
+    @Expose
+    private String kelas;
+    @SerializedName("namaprogram")
+    @Expose
+    private String namaprogram;
+    @SerializedName("level")
+    @Expose
+    private String level;
+    @SerializedName("idsiswabelajar")
+    @Expose
+    private String idsiswabelajar;
 
-    public SemuasiswaModel(String nama, String programlevel) {
-        this.nama = nama;
-        this.programlevel = programlevel;
+    public String getNamalengkap() {
+        return namalengkap;
     }
 
-    public SemuasiswaModel(String tanggal, String namaguru, String statusrapot) {
-        this.tanggal = tanggal;
-        this.namaguru = namaguru;
-        this.statusrapot = statusrapot;
+    public void setNamalengkap(String namalengkap) {
+        this.namalengkap = namalengkap;
     }
 
-    public String getNama() {
-        return nama;
+    public String getKelas() {
+        return kelas;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setKelas(String kelas) {
+        this.kelas = kelas;
     }
 
-    public String getProgramlevel() {
-        return programlevel;
+    public String getNamaprogram() {
+        return namaprogram;
     }
 
-    public void setProgramlevel(String programlevel) {
-        this.programlevel = programlevel;
+    public void setNamaprogram(String namaprogram) {
+        this.namaprogram = namaprogram;
     }
 
-    public String getTanggal() {
-        return tanggal;
+    public String getLevel() {
+        return level;
     }
 
-    public void setTanggal(String tanggal) {
-        this.tanggal = tanggal;
+    public void setLevel(String level) {
+        this.level = level;
     }
 
-    public String getNamaguru() {
-        return namaguru;
+    public String getIdsiswabelajar() {
+        return idsiswabelajar;
     }
 
-    public void setNamaguru(String namaguru) {
-        this.namaguru = namaguru;
-    }
-
-    public String getStatusrapot() {
-        return statusrapot;
-    }
-
-    public void setStatusrapot(String statusrapot) {
-        this.statusrapot = statusrapot;
+    public void setIdsiswabelajar(String idsiswabelajar) {
+        this.idsiswabelajar = idsiswabelajar;
     }
 }

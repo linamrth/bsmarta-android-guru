@@ -1,7 +1,9 @@
 package com.linameritha.myapplication.Fitur.Siswa;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +17,9 @@ import java.util.ArrayList;
 
 public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ItemRowHolder> {
     ArrayList<SiswaModel> dataSiswa;
-    private Activity activity;
+    private Context activity;
 
-    public SiswaAdapter(Activity activity, ArrayList<SiswaModel> dataSiswa){
+    public SiswaAdapter(Context activity, ArrayList<SiswaModel> dataSiswa){
         this.dataSiswa = dataSiswa;
         this.activity = activity;
     }
@@ -29,9 +31,20 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ItemRowHolde
     }
 
     public void onBindViewHolder(ItemRowHolder holder, int i) {
+        final SiswaModel siswaModel = dataSiswa.get(i);
 
-        holder.tvNama.setText(dataSiswa.get(i).getNama());
-        holder.tvProgramlevel.setText(dataSiswa.get(i).getProgramlevel());
+        holder.tvNama.setText(dataSiswa.get(i).getNamalengkap());
+        holder.tvKelas.setText(dataSiswa.get(i).getKelas());
+        holder.tvProgram.setText(dataSiswa.get(i).getNamaprogram());
+        holder.tvLevel.setText("Level " + dataSiswa.get(i).getLevel());
+        holder.cvSiswa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, DetailsiswaActivity.class);
+                intent.putExtra("idsiswabelajar", siswaModel.getIdsiswabelajar());
+                activity.startActivity(intent);
+            }
+        });
     }
 
     public int getItemCount() {
@@ -39,20 +52,16 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ItemRowHolde
     }
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
-        protected TextView tvNama, tvProgramlevel;
+        protected TextView tvNama, tvKelas, tvProgram, tvLevel;
+        protected CardView cvSiswa;
         public ItemRowHolder(View view) {
             super(view);
+
             this.tvNama = (TextView) view.findViewById(R.id.tvnama);
-            this.tvProgramlevel = (TextView)view.findViewById(R.id.tvprogramlevel);
-
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent intent = new Intent(v.getContext(), DetailsiswaActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
+            this.tvKelas = (TextView) view.findViewById(R.id.tvkelas);
+            this.tvProgram = (TextView) view.findViewById(R.id.tvprogram);
+            this.tvLevel = (TextView) view.findViewById(R.id.tvlevel);
+            this.cvSiswa = (CardView) view.findViewById(R.id.cvsiswa);
         }
     }
 }

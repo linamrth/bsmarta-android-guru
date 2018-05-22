@@ -37,8 +37,8 @@ public class DetailsiswaActivity extends AppCompatActivity {
 
     private void createDetailSiswa(){
         for (int i=0; i<10; i++){
-            SiswaModel detailsiswa = new SiswaModel("Jumat, 27 April 2018", "Rosmelia Capriana", "Belum Terisi");
-            dataDetailsiswa.add(detailsiswa);
+//            SiswaModel detailsiswa = new SiswaModel("Jumat, 27 April 2018", "Rosmelia Capriana", "Belum Terisi");
+//            dataDetailsiswa.add(detailsiswa);
         }
     }
 

@@ -1,23 +1,27 @@
 package com.linameritha.myapplication.Fitur.SemuaSiswa;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.linameritha.myapplication.Fitur.Siswa.DetailsiswaActivity;
 import com.linameritha.myapplication.Model.SemuaSiswa.SemuasiswaModel;
+import com.linameritha.myapplication.Model.Siswa.SiswaModel;
 import com.linameritha.myapplication.R;
 
 import java.util.ArrayList;
 
 public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.ItemRowHolder>{
     ArrayList<SemuasiswaModel> dataSemuasiswa;
-    private Activity activity;
+    private Context activity;
 
-    public SemuasiswaAdapter(Activity activity, ArrayList<SemuasiswaModel> dataSemuasiswa){
+    public SemuasiswaAdapter(Context activity, ArrayList<SemuasiswaModel> dataSemuasiswa){
         this.dataSemuasiswa = dataSemuasiswa;
         this.activity = activity;
     }
@@ -29,9 +33,20 @@ public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.It
     }
 
     public void onBindViewHolder(SemuasiswaAdapter.ItemRowHolder holder, int i) {
+        final SemuasiswaModel semuasiswaModel = dataSemuasiswa.get(i);
 
-        holder.tvNama.setText(dataSemuasiswa.get(i).getNama());
-        holder.tvProgramlevel.setText(dataSemuasiswa.get(i).getProgramlevel());
+        holder.tvNama.setText(dataSemuasiswa.get(i).getNamalengkap());
+        holder.tvKelas.setText(dataSemuasiswa.get(i).getKelas());
+        holder.tvProgram.setText(dataSemuasiswa.get(i).getNamaprogram());
+        holder.tvLevel.setText("Level " + dataSemuasiswa.get(i).getLevel());
+        holder.cvSemuasiswa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, DetailsemuasiswaActivity.class);
+                intent.putExtra("idsiswabelajar", semuasiswaModel.getIdsiswabelajar());
+                activity.startActivity(intent);
+            }
+        });
     }
 
     public int getItemCount() {
@@ -39,20 +54,16 @@ public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.It
     }
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
-        protected TextView tvNama, tvProgramlevel;
+        protected TextView tvNama, tvKelas, tvProgram, tvLevel;
+        protected CardView cvSemuasiswa;
         public ItemRowHolder(View view) {
             super(view);
+
             this.tvNama = (TextView) view.findViewById(R.id.tvnama);
-            this.tvProgramlevel = (TextView)view.findViewById(R.id.tvprogramlevel);
-
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent intent = new Intent(v.getContext(), DetailsemuasiswaActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
+            this.tvKelas = (TextView) view.findViewById(R.id.tvkelas);
+            this.tvProgram = (TextView) view.findViewById(R.id.tvprogram);
+            this.tvLevel = (TextView) view.findViewById(R.id.tvlevel);
+            this.cvSemuasiswa = (CardView) view.findViewById(R.id.cvsemuasiswa);
         }
     }
 }

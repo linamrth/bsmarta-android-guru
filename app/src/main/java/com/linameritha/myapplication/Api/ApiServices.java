@@ -2,6 +2,8 @@ package com.linameritha.myapplication.Api;
 
 import com.linameritha.myapplication.Model.Login.ModelResultLogin;
 import com.linameritha.myapplication.Model.Profil.ModelResultProfile;
+import com.linameritha.myapplication.Model.SemuaSiswa.SemuasiswaresultModel;
+import com.linameritha.myapplication.Model.Siswa.SiswaresultModel;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -33,5 +35,11 @@ public class ApiServices {
     public interface GetServices{
         @GET("guruprofil/{id}")
         Call<ModelResultProfile> getProfile(@Path("id") int id);
+
+        @GET("gurusiswa/index/{id}")
+        Call<SiswaresultModel> getSiswa(@Path("id") int id);
+
+        @GET("gurusiswa/allsiswa/{id}")
+        Call<SemuasiswaresultModel> getSemuasiswa(@Path("id")int id);
     }
 }

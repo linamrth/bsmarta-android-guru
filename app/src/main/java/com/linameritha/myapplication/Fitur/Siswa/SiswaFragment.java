@@ -1,5 +1,7 @@
 package com.linameritha.myapplication.Fitur.Siswa;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,34 +10,49 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.linameritha.myapplication.Model.Siswa.SiswaModel;
+import com.linameritha.myapplication.Api.ApiServices;
+import com.linameritha.myapplication.Model.Siswa.SiswaresultModel;
 import com.linameritha.myapplication.R;
 
 import java.util.ArrayList;
 
-public class SiswaFragment extends Fragment {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private ArrayList<SiswaModel> dataSiswa = new ArrayList<>();
+public class SiswaFragment extends Fragment {
+    private ArrayList<SiswaresultModel> dataSiswa;
     private RecyclerView rv;
-    private SiswaAdapter siswa;
+    private SiswaAdapter siswaAdapter;
+    private TextView tvNama, tvKelas, tvProgramlevel, tvLevel;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_siswa, null);
-        rv = (RecyclerView) view.findViewById(R.id.rv);
-        createDataSiswa();
-        siswa = new SiswaAdapter(getActivity(), dataSiswa);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rv.setAdapter(siswa);
-        return view;
-    }
 
-    private void createDataSiswa(){
-        for (int i=0; i<10; i++){
-            SiswaModel siswa = new SiswaModel("Lina Meritha", "Cinta Baca - Level 1");
-            dataSiswa.add(siswa);
-        }
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("bsmart", Context.MODE_PRIVATE);
+        rv = (RecyclerView) view.findViewById(R.id.rv);
+
+        ApiServices.services_get.getSiswa(sharedPreferences.getInt("idguru", 0)).enqueue(new Callback<SiswaresultModel>() {
+            @Override
+            public void onResponse(Call<SiswaresultModel> call, Response<SiswaresultModel> response) {
+                SiswaresultModel resultModel = response.body();
+
+                siswaAdapter = new SiswaAdapter(getActivity(), resultModel.getSiswabelajar());
+                rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                rv.setAdapter(siswaAdapter);
+                rv.getAdapter().notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<SiswaresultModel> call, Throwable t) {
+
+            }
+        });
+
+        return view;
     }
 }

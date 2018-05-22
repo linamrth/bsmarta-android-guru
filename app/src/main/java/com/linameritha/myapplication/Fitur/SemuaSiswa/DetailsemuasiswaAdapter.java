@@ -30,9 +30,9 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
 
     public void onBindViewHolder(DetailsemuasiswaAdapter.ItemRowHolder holder, int i) {
 
-        holder.tvTanggal.setText(dataDetailsemuasiswa.get(i).getTanggal());
-        holder.tvNamaguru.setText(dataDetailsemuasiswa.get(i).getNamaguru());
-        holder.tvStatusrapot.setText(dataDetailsemuasiswa.get(i).getStatusrapot());
+//        holder.tvTanggal.setText(dataDetailsemuasiswa.get(i).getTanggal());
+//        holder.tvNamaguru.setText(dataDetailsemuasiswa.get(i).getNamaguru());
+//        holder.tvStatusrapot.setText(dataDetailsemuasiswa.get(i).getStatusrapot());
     }
 
     public int getItemCount() {

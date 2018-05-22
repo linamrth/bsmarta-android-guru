@@ -2,38 +2,65 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="68dp"
-    xmlns:xmnls="http://schemas.android.com/apk/res-auto"
-    xmlns:cv="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragmentsiswa">
+    android:id="@+id/fragmentsiswa"
+    android:padding="3dp">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cv"
+        android:id="@+id/cvsemuasiswa"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:layout_margin="3dp"
-        cv:cardCornerRadius="4dp"
-        cv:elevation="14dp">
-        <RelativeLayout
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:elevation="10dp">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp">
-            <TextView
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvnama"
-                android:gravity="center"
-                android:textSize="14dp"
-                android:fontFamily="@font/nunitosemibold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvprogramlevel"
-                android:layout_below="@+id/tvnama"
-                android:textSize="13dp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/nunitosemibold"/>
-        </RelativeLayout>
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvnama"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:textColor="@color/colorPrimary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvkelas"
+                    android:layout_below="@+id/tvnama"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:textColor="#362240" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvprogram"
+                    android:layout_below="@+id/tvkelas"
+                    android:gravity="center"
+                    android:textSize="13dp"
+                    android:textColor="#362240"
+                    android:fontFamily="@font/nunitosemibold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvlevel"
+                    android:layout_below="@+id/tvkelas"
+                    android:gravity="center"
+                    android:textSize="13dp"
+                    android:textColor="#362240"
+                    android:fontFamily="@font/nunitosemibold" />
+            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

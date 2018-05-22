@@ -38,8 +38,8 @@ public class DetailsemuasiswaActivity extends AppCompatActivity {
 
     private void createDetailSemuasiswa(){
         for (int i=0; i<10; i++){
-            SemuasiswaModel detailsemuasiswa = new SemuasiswaModel("Rabu, 25 April 2018", "Shifwatin", "Sudah Terisi");
-            dataDetailsemuasiswa.add(detailsemuasiswa);
+//            SemuasiswaModel detailsemuasiswa = new SemuasiswaModel("Rabu, 25 April 2018", "Shifwatin", "Sudah Terisi");
+//            dataDetailsemuasiswa.add(detailsemuasiswa);
         }
     }
 

@@ -30,9 +30,9 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
 
     public void onBindViewHolder(DetailsiswaAdapter.ItemRowHolder holder, int i) {
 
-        holder.tvTanggal.setText(dataDetailsiswa.get(i).getTanggal());
-        holder.tvNamaguru.setText(dataDetailsiswa.get(i).getNamaguru());
-        holder.tvStatusrapot.setText(dataDetailsiswa.get(i).getStatusrapot());
+//        holder.tvTanggal.setText(dataDetailsiswa.get(i).getTanggal());
+//        holder.tvNamaguru.setText(dataDetailsiswa.get(i).getNamaguru());
+//        holder.tvStatusrapot.setText(dataDetailsiswa.get(i).getStatusrapot());
     }
 
     @Override
