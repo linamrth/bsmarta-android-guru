@@ -5,14 +5,14 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragmentsiswa"
-    android:padding="3dp">
+    android:padding="5dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cvsemuasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
-        app:elevation="10dp">
+        app:elevation="5dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvnama"
                     android:gravity="center"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:fontFamily="@font/nunitosemibold"
                     android:textColor="@color/colorPrimary" />
                 <TextView
@@ -39,7 +39,7 @@
                     android:id="@+id/tvkelas"
                     android:layout_below="@+id/tvnama"
                     android:gravity="center"
-                    android:textSize="14dp"
+                    android:textSize="13dp"
                     android:fontFamily="@font/nunitosemibold"
                     android:textColor="#362240" />
                 <TextView
@@ -48,7 +48,7 @@
                     android:id="@+id/tvprogram"
                     android:layout_below="@+id/tvkelas"
                     android:gravity="center"
-                    android:textSize="13dp"
+                    android:textSize="12dp"
                     android:textColor="#362240"
                     android:fontFamily="@font/nunitosemibold" />
                 <TextView
@@ -57,7 +57,7 @@
                     android:id="@+id/tvlevel"
                     android:layout_below="@+id/tvkelas"
                     android:gravity="center"
-                    android:textSize="13dp"
+                    android:textSize="12dp"
                     android:textColor="#362240"
                     android:fontFamily="@font/nunitosemibold" />
             </LinearLayout>
