@@ -18,7 +18,7 @@ public class SiswaModel {
     private String level;
     @SerializedName("idsiswabelajar")
     @Expose
-    private String idsiswabelajar;
+    private Integer idsiswabelajar;
 
     public String getNamalengkap() {
         return namalengkap;
@@ -52,11 +52,11 @@ public class SiswaModel {
         this.level = level;
     }
 
-    public String getIdsiswabelajar() {
+    public Integer getIdsiswabelajar() {
         return idsiswabelajar;
     }
 
-    public void setIdsiswabelajar(String idsiswabelajar) {
+    public void setIdsiswabelajar(Integer idsiswabelajar) {
         this.idsiswabelajar = idsiswabelajar;
     }
 }

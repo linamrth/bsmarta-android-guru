@@ -2,7 +2,9 @@ package com.linameritha.myapplication.Api;
 
 import com.linameritha.myapplication.Model.Login.ModelResultLogin;
 import com.linameritha.myapplication.Model.Profil.ModelResultProfile;
+import com.linameritha.myapplication.Model.SemuaSiswa.DetailsemuasiswaresultModel;
 import com.linameritha.myapplication.Model.SemuaSiswa.SemuasiswaresultModel;
+import com.linameritha.myapplication.Model.Siswa.DetailsiswaresultModel;
 import com.linameritha.myapplication.Model.Siswa.SiswaresultModel;
 
 import retrofit2.Call;
@@ -39,7 +41,13 @@ public class ApiServices {
         @GET("gurusiswa/index/{id}")
         Call<SiswaresultModel> getSiswa(@Path("id") int id);
 
+        @GET("gurusiswa/view/{id}")
+        Call<DetailsiswaresultModel> getDetailsiswa(@Path("id") int id);
+
         @GET("gurusiswa/allsiswa/{id}")
         Call<SemuasiswaresultModel> getSemuasiswa(@Path("id")int id);
+
+        @GET("gurusiswa/allsiswaview/{id}")
+        Call<DetailsemuasiswaresultModel> getDetailsemuasiswa(@Path("id") int id);
     }
 }

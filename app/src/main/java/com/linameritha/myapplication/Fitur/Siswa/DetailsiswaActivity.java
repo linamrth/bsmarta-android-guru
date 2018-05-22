@@ -1,45 +1,67 @@
 package com.linameritha.myapplication.Fitur.Siswa;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.linameritha.myapplication.Api.ApiServices;
+import com.linameritha.myapplication.Model.Siswa.DetailsiswaresultModel;
 import com.linameritha.myapplication.Model.Siswa.SiswaModel;
 import com.linameritha.myapplication.R;
 
 import java.util.ArrayList;
 
-public class DetailsiswaActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private ArrayList<SiswaModel> dataDetailsiswa = new ArrayList<>();
+public class DetailsiswaActivity extends AppCompatActivity {
+    private ArrayList<DetailsiswaresultModel> dataDetailsiswa;
     private RecyclerView rv;
     private DetailsiswaAdapter detailsiswaAdapter;
+    private TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailsiswa);
-        setTitle("Jadwal Pertemuan");
+        setTitle("Daftar Rapot");
+
+        Intent intent = getIntent();
+        Integer idsiswabelajar = intent.getIntExtra("idsiswabelajar", 0);
+        Log.d("terserah", String.valueOf(idsiswabelajar));
+
+        tvHari = (TextView) findViewById(R.id.tvhari);
+        tvTanggal = (TextView) findViewById(R.id.tvtanggal);
+        tvNamaguru = (TextView) findViewById(R.id.tvnamaguru);
+        tvStatus = (TextView) findViewById(R.id.tvstatusrapot);
 
         rv = (RecyclerView) findViewById(R.id.rv);
 
-        createDetailSiswa();
+        ApiServices.services_get.getDetailsiswa(idsiswabelajar).enqueue(new Callback<DetailsiswaresultModel>() {
+            @Override
+            public void onResponse(Call<DetailsiswaresultModel> call, Response<DetailsiswaresultModel> response) {
+                DetailsiswaresultModel resultModel = response.body();
 
-        detailsiswaAdapter = new DetailsiswaAdapter(this, dataDetailsiswa);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(detailsiswaAdapter);
+                detailsiswaAdapter = new DetailsiswaAdapter(DetailsiswaActivity.this, resultModel.getJadwalgenerate());
+                rv.setLayoutManager(new LinearLayoutManager(DetailsiswaActivity.this));
+                rv.setAdapter(detailsiswaAdapter);
+                rv.getAdapter().notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<DetailsiswaresultModel> call, Throwable t) {
+
+            }
+        });
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    private void createDetailSiswa(){
-        for (int i=0; i<10; i++){
-//            SiswaModel detailsiswa = new SiswaModel("Jumat, 27 April 2018", "Rosmelia Capriana", "Belum Terisi");
-//            dataDetailsiswa.add(detailsiswa);
-        }
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

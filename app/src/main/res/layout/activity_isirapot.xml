@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     android:background="@color/graylight"
     android:orientation="vertical"
-    tools:context=".Fitur.Siswa.InputrapotActivity">
+    tools:context=".Fitur.Siswa.IsirapotActivity">
 
     <LinearLayout
         android:layout_width="330dp"

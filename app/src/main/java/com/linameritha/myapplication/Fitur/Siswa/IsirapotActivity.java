@@ -3,23 +3,16 @@ package com.linameritha.myapplication.Fitur.Siswa;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.linameritha.myapplication.Model.Siswa.SiswaModel;
 import com.linameritha.myapplication.R;
 
-import java.util.ArrayList;
-
-public class InputrapotActivity extends AppCompatActivity {
+public class IsirapotActivity extends AppCompatActivity {
     private EditText evnmguru;
     private EditText evmateri;
     private EditText evhasil;
@@ -32,7 +25,7 @@ public class InputrapotActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inputrapot);
+        setContentView(R.layout.activity_isirapot);
         setTitle("Input Rapot Kursus");
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
