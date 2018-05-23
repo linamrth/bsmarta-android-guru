@@ -6,7 +6,10 @@ import com.linameritha.myapplication.Model.SemuaSiswa.DetailsemuasiswaresultMode
 import com.linameritha.myapplication.Model.SemuaSiswa.SemuasiswaresultModel;
 import com.linameritha.myapplication.Model.SemuaSiswa.ViewrapotModel;
 import com.linameritha.myapplication.Model.Siswa.DetailsiswaresultModel;
+import com.linameritha.myapplication.Model.Siswa.GuruModel;
+import com.linameritha.myapplication.Model.Siswa.IsirapotresultModel;
 import com.linameritha.myapplication.Model.Siswa.LihatrapotModel;
+import com.linameritha.myapplication.Model.Siswa.MaterihalamanModel;
 import com.linameritha.myapplication.Model.Siswa.SiswaresultModel;
 
 import retrofit2.Call;
@@ -17,6 +20,8 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 public class ApiServices {
     public static String BASE_URL = "http://192.168.43.198/bsmarta/admin/api/";
@@ -35,6 +40,19 @@ public class ApiServices {
                 @Field("username") String username,
                 @Field("password") String password
         );
+
+        @FormUrlEncoded
+        @POST("gurusiswa/inputrapot")
+        Call<IsirapotresultModel> rapot(
+                @Query("id") String id,
+                @Field("idguru") Integer idguru,
+                @Field("materi") String materi,
+                @Field("halamanketercapaian") Integer halamanketercapaian,
+                @Field("hasil") String hasil,
+                @Field("catatanguru") String catatanguru,
+                @Field("rewardhasil") Integer rewardhasil,
+                @Field("rewardsikap") Integer rewardsikap
+        );
     }
     public interface GetServices{
         @GET("guruprofil/{id}")
@@ -47,7 +65,13 @@ public class ApiServices {
         Call<DetailsiswaresultModel> getDetailsiswa(@Path("id") int id);
 
         @GET("gurusiswa/lihatrapot/{id}")
-        Call<LihatrapotModel> getLihatrapotsiswa(@Path("id") int id);
+        Call<LihatrapotModel> getLihatrapotsiswa(@Path("id") String id);
+
+        @GET("gurusiswa/materihalaman")
+        Call<MaterihalamanModel> getMaterihalaman(@Query("id") String id);
+
+        @GET("gurusiswa/guru/{id}")
+        Call<GuruModel> getGuru(@Path("id") int id);
 
         @GET("gurusiswa/allsiswa/{id}")
         Call<SemuasiswaresultModel> getSemuasiswa(@Path("id")int id);

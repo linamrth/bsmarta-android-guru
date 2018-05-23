@@ -28,7 +28,7 @@ public class LihatrapotActivity extends AppCompatActivity {
         setTitle("Rapot Kursus");
 
         Intent intent = getIntent();
-        Integer idgenerate = intent.getIntExtra("idgenerate", 0);
+        String idgenerate = intent.getStringExtra("idgenerate");
         Log.d("terserah", String.valueOf(idgenerate));
 
         tvNama = (TextView) findViewById(R.id.tvnama);

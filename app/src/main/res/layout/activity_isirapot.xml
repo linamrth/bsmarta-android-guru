@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,175 +6,218 @@
     android:layout_height="match_parent"
     android:background="@color/graylight"
     android:orientation="vertical"
-    tools:context=".Fitur.Siswa.IsirapotActivity">
+    tools:context=".Fitur.Siswa.IsirapotActivity"
+    android:padding="10dp">
 
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/nmguru"
-                android:hint="Nama Guru"
-                android:inputType="text"
-                android:textColorHint="@color/white"
-                android:fontFamily="@font/nunitosemibold"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/materi"
-                android:hint="Materi"
-                android:inputType="text"
-                android:textColorHint="@color/white"
-                android:fontFamily="@font/nunitosemibold"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/hasil"
-                android:hint="Hasil Belajar"
-                android:inputType="text"
-                android:textColorHint="@color/white"
-                android:fontFamily="@font/nunitosemibold"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/halketercapaian"
-                android:hint="Halaman Ketercapaian"
-                android:inputType="text"
-                android:textColorHint="@color/white"
-                android:fontFamily="@font/nunitosemibold"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/catatanguru"
-                android:hint="Catatan Guru"
-                android:inputType="text"
-                android:textColorHint="@color/white"
-                android:fontFamily="@font/nunitosemibold"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rewardhasil"
-                android:text="Reward Hasil"
-                android:fontFamily="@font/nunitosemibold"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/cbrewardhasil1"
-                    android:text="@string/satu"
-                    android:fontFamily="@font/nunitosemibold"/>
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/cbrewardhasil2"
-                    android:text="@string/dua"
-                    android:fontFamily="@font/nunitosemibold"/>
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/cbrewardhasil3"
-                    android:text="@string/tiga"
-                    android:fontFamily="@font/nunitosemibold"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
+            android:textSize="30dp"
+            android:textColor="#362240"
+            android:fontFamily="@font/cookie"
+            android:text="Form Input Rapot Kursus"
+            android:layout_gravity="center"/>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rewarsikap"
-                android:text="Reward Sikap"
-                android:fontFamily="@font/nunitosemibold"
-                android:layout_marginBottom="8dp"
-                android:textSize="15dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="30dp">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/cbrewardsikap1"
-                    android:text="@string/satu"
-                    android:fontFamily="@font/nunitosemibold"/>
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/cbrewardsikap2"
-                    android:text="@string/dua"
-                    android:fontFamily="@font/nunitosemibold"/>
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/cbrewardsikap3"
-                    android:text="@string/tiga"
-                    android:fontFamily="@font/nunitosemibold"/>
-            </LinearLayout>
-        </LinearLayout>
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text="Input Nilai"
-            android:textColor="@color/white"
-            android:background="@color/colorPrimaryDark"
-            android:fontFamily="@font/nunitosemibold"/>
+            android:layout_height="1dp"
+            android:background="#362240"
+            android:layout_marginTop="5dp"/>
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nmguru"
+                    android:hint="Nama Guru"
+                    android:inputType="text"
+                    android:textColorHint="#362240"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15dp"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/materi"
+                    android:hint="Materi"
+                    android:inputType="text"
+                    android:textColorHint="#362240"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/halketercapaian"
+                    android:hint="Halaman Ketercapaian"
+                    android:inputType="text"
+                    android:textColorHint="#362240"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hasil"
+                    android:hint="Hasil Belajar"
+                    android:inputType="text"
+                    android:textColorHint="#362240"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/catatanguru"
+                    android:hint="Catatan Guru"
+                    android:inputType="text"
+                    android:textColorHint="#362240"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15dp"/>
+            </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvrewardhasil"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="#362240"
+                    android:textSize="15dp"
+                    android:text="Reward Hasil"/>
+                <RadioGroup
+                    android:id="@+id/rewardhasil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp">
+                    <RadioButton
+                        android:id="@+id/rewardhasil1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:textSize="13dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="30dp"
+                        android:text="1"/>
+                    <RadioButton
+                        android:id="@+id/rewardhasil2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:textSize="13dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="30dp"
+                        android:text="2"/>
+                    <RadioButton
+                        android:id="@+id/rewardhasil3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:textSize="13dp"
+                        android:padding="5dp"
+                        android:text="3"/>
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvrewardsikap"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="#362240"
+                    android:textSize="15dp"
+                    android:text="Reward Sikap"/>
+                <RadioGroup
+                    android:id="@+id/rewardsikap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp">
+                    <RadioButton
+                        android:id="@+id/rewardsikap1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:textSize="13dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="30dp"
+                        android:text="1"/>
+                    <RadioButton
+                        android:id="@+id/rewardsikap2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:textSize="13dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="30dp"
+                        android:text="2"/>
+                    <RadioButton
+                        android:id="@+id/rewardsikap3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:textSize="13dp"
+                        android:padding="5dp"
+                        android:text="3"/>
+                </RadioGroup>
+            </LinearLayout>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:text="Input Nilai"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimaryDark"
+                android:fontFamily="@font/nunitosemibold"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
-</ScrollView>

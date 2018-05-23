@@ -29,7 +29,7 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
         return mh;
     }
 
-    public void onBindViewHolder(DetailsiswaAdapter.ItemRowHolder holder, int i) {
+    public void onBindViewHolder(DetailsiswaAdapter.ItemRowHolder holder, final int i) {
         final DetailsiswaModel detailsiswaModel = dataDetailsiswa.get(i);
 
         holder.tvHari.setText(dataDetailsiswa.get(i).getHari());
@@ -51,7 +51,7 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
                     activity.startActivity(intent);
                 } else {
                     Intent intent = new Intent(activity, IsirapotActivity.class);
-                    intent.putExtra("idgenerate", detailsiswaModel.getIdgenerate());
+                    intent.putExtra("idgenerate", detailsiswaModel.getIdgenerate()+"_"+(i+1));
                     activity.startActivity(intent);
                 }
             }
