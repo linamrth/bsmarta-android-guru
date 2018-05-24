@@ -1,6 +1,7 @@
 package com.linameritha.myapplication.Fitur.Profil;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,11 +10,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.linameritha.myapplication.Api.ApiServices;
 import com.linameritha.myapplication.Fitur.LoginForm.LoginForm;
+import com.linameritha.myapplication.Fitur.LoginForm.Session;
+import com.linameritha.myapplication.Fitur.Menu.ButtomNavigation;
 import com.linameritha.myapplication.Model.Profil.ModelResultProfile;
 import com.linameritha.myapplication.R;
 
@@ -25,6 +29,8 @@ public class ProfilFragment extends Fragment {
 
     private ModelResultProfile modelResultProfile;
     private TextView tvNamaguru,tvNamacabang,tvTelepon,tvAlamat;
+    private Button btnlogout;
+    Session session;
 
     @Nullable
     @Override
@@ -36,6 +42,19 @@ public class ProfilFragment extends Fragment {
         tvNamacabang = view.findViewById(R.id.tv_namacabang);
         tvTelepon = view.findViewById(R.id.tv_telepon);
         tvAlamat = view.findViewById(R.id.tv_alamat);
+        btnlogout = view.findViewById(R.id.btnlogout);
+
+        session = new Session(getActivity());
+        if (!session.login()){
+            logout();
+        }
+
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
+            }
+        });
 
         ApiServices.services_get.getProfile(sharedPreferences.getInt("idguru",0)).enqueue(new Callback<ModelResultProfile>() {
             @Override
@@ -55,5 +74,11 @@ public class ProfilFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void logout(){
+        session.setLogin(false, 0);
+        getActivity().finish();
+        startActivity(new Intent(getActivity(), LoginForm.class));
     }
 }

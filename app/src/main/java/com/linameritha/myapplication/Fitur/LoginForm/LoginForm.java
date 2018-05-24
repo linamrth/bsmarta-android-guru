@@ -24,7 +24,7 @@ public class LoginForm extends AppCompatActivity {
 
     private ModelResultLogin modelResultLogin;
     private EditText etUsername,etPassword;
-    private SessionManager sessionManager;
+    Session session;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -32,14 +32,20 @@ public class LoginForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_form);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("bsmart", MODE_PRIVATE);
-        final SharedPreferences.Editor edit =sharedPreferences.edit();
-        edit.clear();
-        edit.apply();
+//        SharedPreferences sharedPreferences = getSharedPreferences("bsmart", MODE_PRIVATE);
+//        final SharedPreferences.Editor edit =sharedPreferences.edit();
+//        edit.clear();
+//        edit.apply();
 
+        session = new Session(this);
         etUsername = (EditText) findViewById(R.id.et_username);
         etPassword = (EditText) findViewById(R.id.et_password);
         Button bt = (Button) findViewById(R.id.bt);
+
+        if (session.login()){
+            startActivity(new Intent(LoginForm.this, ButtomNavigation.class));
+            finish();
+        }
 
 //        sessionManager = new SessionManager(getApplicationContext());
 //        if(sessionManager.isLogin()){
@@ -62,13 +68,14 @@ public class LoginForm extends AppCompatActivity {
 //                            sessionManager.setLogin(true);
 //                            sessionManager.setUsername(modelResultLogin.getResult().getUsername());
 
-                            edit.putString("username", modelResultLogin.getResult().getUsername());
-                            edit.putInt("idguru", modelResultLogin.getResult().getIdguru());
-                            edit.commit();
+//                            edit.putString("username", modelResultLogin.getResult().getUsername());
+//                            edit.putInt("idguru", modelResultLogin.getResult().getIdguru());
+//                            edit.commit();
 
                             //SharedPreferences sharedPreferences = getSharedPreferences("bsmart", MODE_PRIVATE);
                             //SharedPreferences.Editor edit =sharedPreferences.edit();
 
+                            session.setLogin(true, modelResultLogin.getResult().getIdguru());
 
                             Log.d("username", modelResultLogin.getResult().getUsername());
                             Log.d("email", modelResultLogin.getResult().getEmail());
