@@ -55,19 +55,24 @@
                     android:fontFamily="@font/nunitosemibold"
                     android:textColor="#362240"
                     android:text="Shifwatin"/>
-                <TextView
+
+                <ImageView
+                    android:id="@+id/tvstatusrapot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvstatusrapot"
-                    android:layout_gravity="right"
-                    android:gravity="right"
                     android:layout_below="@+id/tvnamaguru"
-                    android:textSize="12dp"
-                    android:fontFamily="@font/nunitosemibold"
-                    android:background="@drawable/background_statusrapot"
-                    android:textColor="@color/white"
-                    android:text="Sudah Terisi"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_gravity="right" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/tvstatusrapot"-->
+                    <!--android:layout_gravity="right"-->
+                    <!--android:gravity="right"-->
+                    <!--android:layout_below="@+id/tvnamaguru"-->
+                    <!--android:textSize="12dp"-->
+                    <!--android:fontFamily="@font/nunitosemibold"-->
+                    <!--android:textColor="#362240"-->
+                    <!--android:layout_marginBottom="5dp"/>-->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

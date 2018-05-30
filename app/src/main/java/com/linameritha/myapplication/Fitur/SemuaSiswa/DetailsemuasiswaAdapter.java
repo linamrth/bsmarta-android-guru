@@ -30,7 +30,7 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
         return mh;
     }
 
-    public void onBindViewHolder(DetailsemuasiswaAdapter.ItemRowHolder holder, int i) {
+    public void onBindViewHolder(DetailsemuasiswaAdapter.ItemRowHolder holder, final int i) {
         final DetailsemuasiswaModel detailsemuasiswaModel = dataDetailsemuasiswa.get(i);
 
         holder.tvHari.setText(dataDetailsemuasiswa.get(i).getHari());
@@ -52,7 +52,7 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
                     activity.startActivity(intent);
                 } else {
                     Intent intent = new Intent(activity, InputRapotActivity.class);
-                    intent.putExtra("idgenerate", detailsemuasiswaModel.getIdgenerate());
+                    intent.putExtra("idgenerate", detailsemuasiswaModel.getIdgenerate()+"_"+(i+1));
                     activity.startActivity(intent);
                 }
             }

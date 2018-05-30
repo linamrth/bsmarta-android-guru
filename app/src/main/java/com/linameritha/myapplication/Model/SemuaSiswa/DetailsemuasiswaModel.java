@@ -18,7 +18,7 @@ public class DetailsemuasiswaModel {
     private String namaguru;
     @SerializedName("idgenerate")
     @Expose
-    private Integer idgenerate;
+    private String idgenerate;
 
     public String getHari() {
         return hari;
@@ -52,11 +52,11 @@ public class DetailsemuasiswaModel {
         this.namaguru = namaguru;
     }
 
-    public Integer getIdgenerate() {
+    public String getIdgenerate() {
         return idgenerate;
     }
 
-    public void setIdgenerate(Integer idgenerate) {
+    public void setIdgenerate(String idgenerate) {
         this.idgenerate = idgenerate;
     }
 

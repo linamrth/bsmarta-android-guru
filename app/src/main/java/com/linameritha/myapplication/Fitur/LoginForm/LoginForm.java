@@ -32,11 +32,6 @@ public class LoginForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_form);
 
-//        SharedPreferences sharedPreferences = getSharedPreferences("bsmart", MODE_PRIVATE);
-//        final SharedPreferences.Editor edit =sharedPreferences.edit();
-//        edit.clear();
-//        edit.apply();
-
         session = new Session(this);
         etUsername = (EditText) findViewById(R.id.et_username);
         etPassword = (EditText) findViewById(R.id.et_password);
@@ -47,15 +42,6 @@ public class LoginForm extends AppCompatActivity {
             finish();
         }
 
-//        sessionManager = new SessionManager(getApplicationContext());
-//        if(sessionManager.isLogin()){
-//            Intent intent = new Intent(LoginForm.this, ButtomNavigation.class);
-//            startActivity(intent);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            finish();
-//        }
-
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,17 +49,6 @@ public class LoginForm extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<ModelResultLogin> call, Response<ModelResultLogin> response) {
                         modelResultLogin = response.body();
-//                        if(modelResultLogin != null) {
-//                            sessionManager.setUid(modelResultLogin.getResult().getId());
-//                            sessionManager.setLogin(true);
-//                            sessionManager.setUsername(modelResultLogin.getResult().getUsername());
-
-//                            edit.putString("username", modelResultLogin.getResult().getUsername());
-//                            edit.putInt("idguru", modelResultLogin.getResult().getIdguru());
-//                            edit.commit();
-
-                            //SharedPreferences sharedPreferences = getSharedPreferences("bsmart", MODE_PRIVATE);
-                            //SharedPreferences.Editor edit =sharedPreferences.edit();
 
                             session.setLogin(true, modelResultLogin.getResult().getIdguru());
 
@@ -84,10 +59,6 @@ public class LoginForm extends AppCompatActivity {
 
                             Intent intent = new Intent(LoginForm.this, ButtomNavigation.class);
                             startActivity(intent);
-//                        }
-//                        else{
-//                            Toast.makeText(LoginForm.this, "Akun belum terdaftar !", Toast.LENGTH_SHORT).show();
-//                        }
                     }
 
                     @Override

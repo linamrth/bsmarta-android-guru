@@ -30,12 +30,14 @@ public class ViewrapotActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewrapot);
         setTitle("Rapot Kursus");
 
         Intent intent = getIntent();
-        Integer idgenerate = intent.getIntExtra("idgenerate", 0);
+        String idgenerate = intent.getStringExtra("idgenerate");
         Log.d("terserah", String.valueOf(idgenerate));
 
         tvNama = (TextView) findViewById(R.id.tvnama);

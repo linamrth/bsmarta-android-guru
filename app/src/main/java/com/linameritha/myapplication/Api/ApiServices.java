@@ -3,6 +3,9 @@ package com.linameritha.myapplication.Api;
 import com.linameritha.myapplication.Model.Login.ModelResultLogin;
 import com.linameritha.myapplication.Model.Profil.ModelResultProfile;
 import com.linameritha.myapplication.Model.SemuaSiswa.DetailsemuasiswaresultModel;
+import com.linameritha.myapplication.Model.SemuaSiswa.GurusemuasiswaModel;
+import com.linameritha.myapplication.Model.SemuaSiswa.InputrapotresultsemuasiswaModel;
+import com.linameritha.myapplication.Model.SemuaSiswa.MaterihalamansemuasiswaModel;
 import com.linameritha.myapplication.Model.SemuaSiswa.SemuasiswaresultModel;
 import com.linameritha.myapplication.Model.SemuaSiswa.ViewrapotModel;
 import com.linameritha.myapplication.Model.Siswa.DetailsiswaresultModel;
@@ -24,7 +27,7 @@ import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 public class ApiServices {
-    public static String BASE_URL = "http://192.168.43.198/bsmarta/admin/api/";
+    public static String BASE_URL = "http://lina.jagopesan.com/admin/api/";
 
     public static PostServices services_post = new Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -53,7 +56,21 @@ public class ApiServices {
                 @Field("rewardhasil") Integer rewardhasil,
                 @Field("rewardsikap") Integer rewardsikap
         );
+
+        @FormUrlEncoded
+        @POST("gurusiswa/allsiswainputrapot")
+        Call<InputrapotresultsemuasiswaModel> rapotallsiswa(
+                @Query("id") String id,
+                @Field("idguru") Integer idguru,
+                @Field("materi") String materi,
+                @Field("halamanketercapaian") Integer halamanketercapaian,
+                @Field("hasil") String hasil,
+                @Field("catatanguru") String catatanguru,
+                @Field("rewardhasil") Integer rewardhasil,
+                @Field("rewardsikap") Integer rewardsikap
+        );
     }
+    
     public interface GetServices{
         @GET("guruprofil/{id}")
         Call<ModelResultProfile> getProfile(@Path("id") int id);
@@ -67,11 +84,11 @@ public class ApiServices {
         @GET("gurusiswa/lihatrapot/{id}")
         Call<LihatrapotModel> getLihatrapotsiswa(@Path("id") String id);
 
-        @GET("gurusiswa/materihalaman")
-        Call<MaterihalamanModel> getMaterihalaman(@Query("id") String id);
-
         @GET("gurusiswa/guru/{id}")
         Call<GuruModel> getGuru(@Path("id") int id);
+
+        @GET("gurusiswa/materihalaman")
+        Call<MaterihalamanModel> getMaterihalaman(@Query("id") String id);
 
         @GET("gurusiswa/allsiswa/{id}")
         Call<SemuasiswaresultModel> getSemuasiswa(@Path("id")int id);
@@ -80,6 +97,12 @@ public class ApiServices {
         Call<DetailsemuasiswaresultModel> getDetailsemuasiswa(@Path("id") int id);
 
         @GET("gurusiswa/allsiswalihatrapot/{id}")
-        Call<ViewrapotModel> getViewrapotsemuasiswa(@Path("id") int id);
+        Call<ViewrapotModel> getViewrapotsemuasiswa(@Path("id") String id);
+
+        @GET("gurusiswa/allsiswamaterihalaman")
+        Call<MaterihalamansemuasiswaModel> getMaterihalamansemuasiswa(@Query("id") String id);
+
+        @GET("gurusiswa/allsiswaguru/{id}")
+        Call<GurusemuasiswaModel> getGurusemuasiswa(@Path("id") int id);
     }
 }

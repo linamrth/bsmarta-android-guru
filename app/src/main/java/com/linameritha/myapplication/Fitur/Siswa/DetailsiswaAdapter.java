@@ -2,10 +2,12 @@ package com.linameritha.myapplication.Fitur.Siswa;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,11 +39,13 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
         holder.tvNamaguru.setText(dataDetailsiswa.get(i).getNamaguru());
         String status;
         if(dataDetailsiswa.get(i).getStatusrapotkursus().equals("S")){
-            status = "Sudah Terisi";
+//            status = "Sudah Terisi";
+            holder.tvStatus.setBackgroundResource(R.drawable.ic_check_circle_black_24dp);
         } else {
-            status = "Belum Terisi";
+//            status = "Belum Terisi";
+            holder.tvStatus.setBackgroundResource(R.drawable.ic_highlight_off_black_24dp);
         }
-        holder.tvStatus.setText(status);
+//        holder.tvStatus.setText(status);
         holder.llStatusrapot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +68,8 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
     }
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
-        protected TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
+        protected TextView tvHari, tvTanggal, tvNamaguru;
+        protected ImageView tvStatus;
         protected LinearLayout llStatusrapot;
         public ItemRowHolder(View view) {
             super(view);
@@ -72,7 +77,7 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
             this.tvHari = (TextView) view.findViewById(R.id.tvhari);
             this.tvTanggal = (TextView) view.findViewById(R.id.tvtanggal);
             this.tvNamaguru = (TextView) view.findViewById(R.id.tvnamaguru);
-            this.tvStatus = (TextView) view.findViewById(R.id.tvstatusrapot);
+            this.tvStatus = (ImageView) view.findViewById(R.id.tvstatusrapot);
             this.llStatusrapot = (LinearLayout) view.findViewById(R.id.llstatusrapot);
         }
     }

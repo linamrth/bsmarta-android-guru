@@ -29,6 +29,7 @@ public class DetailsemuasiswaActivity extends AppCompatActivity {
     private RecyclerView rv;
     private DetailsemuasiswaAdapter detailsemuasiswaAdapter;
     private TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
+    Integer idsiswabelajar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class DetailsemuasiswaActivity extends AppCompatActivity {
         setTitle("Daftar Rapot");
 
         Intent intent = getIntent();
-        Integer idsiswabelajar = intent.getIntExtra("idsiswabelajar", 0);
+        idsiswabelajar = intent.getIntExtra("idsiswabelajar", 0);
         Log.d("terserah", String.valueOf(idsiswabelajar));
 
         tvHari = (TextView) findViewById(R.id.tvhari);
@@ -46,6 +47,23 @@ public class DetailsemuasiswaActivity extends AppCompatActivity {
         tvStatus = (TextView) findViewById(R.id.tvstatusrapot);
 
         rv = (RecyclerView) findViewById(R.id.rv);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == android.R.id.home){
+            this.finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    protected void onResume() {
+        super.onResume();
 
         ApiServices.services_get.getDetailsemuasiswa(idsiswabelajar).enqueue(new Callback<DetailsemuasiswaresultModel>() {
             @Override
@@ -63,18 +81,5 @@ public class DetailsemuasiswaActivity extends AppCompatActivity {
 
             }
         });
-
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-
-        if (id == android.R.id.home){
-            this.finish();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
