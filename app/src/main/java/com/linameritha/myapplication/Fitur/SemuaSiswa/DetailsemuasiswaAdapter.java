@@ -6,9 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.linameritha.myapplication.Fitur.Siswa.DateParser;
 import com.linameritha.myapplication.Fitur.Siswa.IsirapotActivity;
 import com.linameritha.myapplication.Model.SemuaSiswa.DetailsemuasiswaModel;
 import com.linameritha.myapplication.R;
@@ -39,8 +42,10 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
         String status;
         if(dataDetailsemuasiswa.get(i).getStatusrapotkursus().equals("S")){
             status = "Sudah Terisi";
+            holder.logo.setBackgroundResource(R.drawable.ic_check_circle_black_24dp);
         } else {
             status = "Belum Terisi";
+            holder.logo.setBackgroundResource(R.drawable.ic_highlight_off_black_24dp);
         }
         holder.tvStatus.setText(status);
         holder.llStatusrapot.setOnClickListener(new View.OnClickListener() {
@@ -51,9 +56,13 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
                     intent.putExtra("idgenerate", detailsemuasiswaModel.getIdgenerate());
                     activity.startActivity(intent);
                 } else {
-                    Intent intent = new Intent(activity, InputRapotActivity.class);
-                    intent.putExtra("idgenerate", detailsemuasiswaModel.getIdgenerate()+"_"+(i+1));
-                    activity.startActivity(intent);
+                    if (com.linameritha.myapplication.Fitur.Siswa.DateParser.now().after(DateParser.parseToDate(dataDetailsemuasiswa.get(i).getTanggal()))) {
+                        Intent intent = new Intent(activity, InputRapotActivity.class);
+                        intent.putExtra("idgenerate", detailsemuasiswaModel.getIdgenerate()+"_"+(i+1));
+                        activity.startActivity(intent);
+                    } else {
+                        Toast.makeText(activity, "Belum Saatnya Mengisi Rapot Kursus", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -65,6 +74,7 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
         protected TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
+        protected ImageView logo;
         protected LinearLayout llStatusrapot;
         public ItemRowHolder(View view) {
             super(view);
@@ -72,7 +82,8 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
             this.tvHari = (TextView) view.findViewById(R.id.tvhari);
             this.tvTanggal = (TextView) view.findViewById(R.id.tvtanggal);
             this.tvNamaguru = (TextView) view.findViewById(R.id.tvnamaguru);
-            this.tvStatus = (TextView) view.findViewById(R.id.tvstatusrapot);
+            this.tvStatus = (TextView) view.findViewById(R.id.tvstatus);
+            this.logo = (ImageView) view.findViewById(R.id.logostatus);
             this.llStatusrapot = (LinearLayout) view.findViewById(R.id.llstatusrapot);
         }
     }

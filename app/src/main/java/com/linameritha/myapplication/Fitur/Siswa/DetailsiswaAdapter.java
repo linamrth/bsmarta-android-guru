@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.linameritha.myapplication.Model.Siswa.DetailsiswaModel;
 import com.linameritha.myapplication.R;
@@ -31,7 +32,7 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
         return mh;
     }
 
-    public void onBindViewHolder(DetailsiswaAdapter.ItemRowHolder holder, final int i) {
+    public void onBindViewHolder(ItemRowHolder holder, final int i) {
         final DetailsiswaModel detailsiswaModel = dataDetailsiswa.get(i);
 
         holder.tvHari.setText(dataDetailsiswa.get(i).getHari());
@@ -39,13 +40,13 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
         holder.tvNamaguru.setText(dataDetailsiswa.get(i).getNamaguru());
         String status;
         if(dataDetailsiswa.get(i).getStatusrapotkursus().equals("S")){
-//            status = "Sudah Terisi";
-            holder.tvStatus.setBackgroundResource(R.drawable.ic_check_circle_black_24dp);
+            status = "Sudah Terisi";
+            holder.logo.setBackgroundResource(R.drawable.ic_check_circle_black_24dp);
         } else {
-//            status = "Belum Terisi";
-            holder.tvStatus.setBackgroundResource(R.drawable.ic_highlight_off_black_24dp);
+            status = "Belum Terisi";
+            holder.logo.setBackgroundResource(R.drawable.ic_highlight_off_black_24dp);
         }
-//        holder.tvStatus.setText(status);
+        holder.tvStatus.setText(status);
         holder.llStatusrapot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,9 +55,14 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
                     intent.putExtra("idgenerate", detailsiswaModel.getIdgenerate());
                     activity.startActivity(intent);
                 } else {
-                    Intent intent = new Intent(activity, IsirapotActivity.class);
-                    intent.putExtra("idgenerate", detailsiswaModel.getIdgenerate()+"_"+(i+1));
-                    activity.startActivity(intent);
+                    if (DateParser.now().after(DateParser.parseToDate(dataDetailsiswa.get(i).getTanggal()))){
+                        Intent intent = new Intent(activity, IsirapotActivity.class);
+                        intent.putExtra("idgenerate", detailsiswaModel.getIdgenerate()+"_"+(i+1));
+                        activity.startActivity(intent);
+                    } else {
+                        Toast.makeText(activity, "Belum Saatnya Mengisi Rapot Kursus", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -68,8 +74,8 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
     }
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
-        protected TextView tvHari, tvTanggal, tvNamaguru;
-        protected ImageView tvStatus;
+        protected TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
+        protected ImageView logo;
         protected LinearLayout llStatusrapot;
         public ItemRowHolder(View view) {
             super(view);
@@ -77,7 +83,8 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
             this.tvHari = (TextView) view.findViewById(R.id.tvhari);
             this.tvTanggal = (TextView) view.findViewById(R.id.tvtanggal);
             this.tvNamaguru = (TextView) view.findViewById(R.id.tvnamaguru);
-            this.tvStatus = (ImageView) view.findViewById(R.id.tvstatusrapot);
+            this.tvStatus = (TextView) view.findViewById(R.id.tvstatus);
+            this.logo = (ImageView) view.findViewById(R.id.logostatus);
             this.llStatusrapot = (LinearLayout) view.findViewById(R.id.llstatusrapot);
         }
     }

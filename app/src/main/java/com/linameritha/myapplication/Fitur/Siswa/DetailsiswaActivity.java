@@ -25,8 +25,8 @@ public class DetailsiswaActivity extends AppCompatActivity {
     private ArrayList<DetailsiswaresultModel> dataDetailsiswa;
     private RecyclerView rv;
     private DetailsiswaAdapter detailsiswaAdapter;
-    private TextView tvHari, tvTanggal, tvNamaguru;
-    private ImageView tvStatus;
+    private TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
+    private ImageView logo;
     Integer idsiswabelajar;
 
     @Override
@@ -42,7 +42,8 @@ public class DetailsiswaActivity extends AppCompatActivity {
         tvHari = (TextView) findViewById(R.id.tvhari);
         tvTanggal = (TextView) findViewById(R.id.tvtanggal);
         tvNamaguru = (TextView) findViewById(R.id.tvnamaguru);
-        tvStatus = (ImageView) findViewById(R.id.tvstatusrapot);
+        tvStatus = (TextView) findViewById(R.id.tvstatus);
+        logo = (ImageView) findViewById(R.id.logostatus);
 
         rv = (RecyclerView) findViewById(R.id.rv);
 

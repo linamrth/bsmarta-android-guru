@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linameritha.myapplication.Api.ApiServices;
@@ -29,6 +30,7 @@ public class DetailsemuasiswaActivity extends AppCompatActivity {
     private RecyclerView rv;
     private DetailsemuasiswaAdapter detailsemuasiswaAdapter;
     private TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
+    private ImageView logo;
     Integer idsiswabelajar;
 
     @Override
@@ -44,7 +46,8 @@ public class DetailsemuasiswaActivity extends AppCompatActivity {
         tvHari = (TextView) findViewById(R.id.tvhari);
         tvTanggal = (TextView) findViewById(R.id.tvtanggal);
         tvNamaguru = (TextView) findViewById(R.id.tvnamaguru);
-        tvStatus = (TextView) findViewById(R.id.tvstatusrapot);
+        tvStatus = (TextView) findViewById(R.id.tvstatus);
+        logo = (ImageView) findViewById(R.id.logostatus);
 
         rv = (RecyclerView) findViewById(R.id.rv);
 
