@@ -39,10 +39,10 @@ public class ViewrapotModel {
     private String catatanguru;
     @SerializedName("rewardhasil")
     @Expose
-    private String rewardhasil;
+    private Float rewardhasil;
     @SerializedName("rewardsikap")
     @Expose
-    private String rewardsikap;
+    private Float rewardsikap;
 
     public String getNamalengkap() {
         return namalengkap;
@@ -132,19 +132,19 @@ public class ViewrapotModel {
         this.catatanguru = catatanguru;
     }
 
-    public String getRewardhasil() {
+    public Float getRewardhasil() {
         return rewardhasil;
     }
 
-    public void setRewardhasil(String rewardhasil) {
+    public void setRewardhasil(Float rewardhasil) {
         this.rewardhasil = rewardhasil;
     }
 
-    public String getRewardsikap() {
+    public Float getRewardsikap() {
         return rewardsikap;
     }
 
-    public void setRewardsikap(String rewardsikap) {
+    public void setRewardsikap(Float rewardsikap) {
         this.rewardsikap = rewardsikap;
     }
 }

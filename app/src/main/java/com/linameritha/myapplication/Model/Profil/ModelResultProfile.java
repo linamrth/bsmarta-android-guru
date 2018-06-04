@@ -1,54 +1,31 @@
 package com.linameritha.myapplication.Model.Profil;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class ModelResultProfile {
+    @SerializedName("status")
+    @Expose
     private String status;
-    private Profile results;
-
+    @SerializedName("results")
+    @Expose
+    private ModelProfile results;
 
     public String getStatus() {
         return status;
     }
 
-    public Profile getResults() {
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public ModelProfile getResults() {
         return results;
     }
 
-    public class Profile {
-        private String namaguru, telepon, alamat, namacabang;
-        private ArrayList<Program> program;
-
-        public ArrayList<Program> getProgram() {
-            return program;
-        }
-
-        public String getNamaguru() {
-            return namaguru;
-        }
-
-        public String getTelepon() {
-            return telepon;
-        }
-
-        public String getAlamat() {
-            return alamat;
-        }
-
-        public String getNamacabang() {
-            return namacabang;
-        }
-    }
-
-    public class Program {
-        private String namaprogram, level;
-
-        public String getNamaprogram() {
-            return namaprogram;
-        }
-
-        public String getLevel() {
-            return level;
-        }
+    public void setResults(ModelProfile results) {
+        this.results = results;
     }
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.linameritha.myapplication.Api.ApiServices;
@@ -19,7 +20,8 @@ public class LihatrapotActivity extends AppCompatActivity {
     private LihatrapotModel lihatrapotModel;
     private TextView tvNama, tvKelas, tvProgram, tvLevel;
     private TextView tvNamaguru, tvTanggal, tvPertemuanke;
-    private TextView tvMateri, tvHalamanketercapaian, tvHasil, tvCatatanguru, tvRewardhasil, tvRewardsikap;
+    private TextView tvMateri, tvHalamanketercapaian, tvHasil, tvCatatanguru;
+    private RatingBar tvRewardhasil, tvRewardsikap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,8 @@ public class LihatrapotActivity extends AppCompatActivity {
         tvHalamanketercapaian = (TextView) findViewById(R.id.tvhalamanketercapaian);
         tvHasil = (TextView) findViewById(R.id.tvhasil);
         tvCatatanguru = (TextView) findViewById(R.id.tvcatatanguru);
-        tvRewardhasil = (TextView) findViewById(R.id.tvrewardhasil);
-        tvRewardsikap = (TextView) findViewById(R.id.tvrewardsikap);
+        tvRewardhasil = (RatingBar) findViewById(R.id.tvrewardhasil);
+        tvRewardsikap = (RatingBar) findViewById(R.id.tvrewardsikap);
 
         ApiServices.services_get.getLihatrapotsiswa(idgenerate).enqueue(new Callback<LihatrapotModel>() {
             @Override
@@ -61,8 +63,8 @@ public class LihatrapotActivity extends AppCompatActivity {
                 tvHalamanketercapaian.setText("Halaman " + lihatrapotModel.getHalamanketercapaian());
                 tvHasil.setText(lihatrapotModel.getHasil());
                 tvCatatanguru.setText(lihatrapotModel.getCatatanguru());
-                tvRewardhasil.setText("Bintang " + lihatrapotModel.getRewardhasil());
-                tvRewardsikap.setText("Bintang " + lihatrapotModel.getRewardsikap());
+                tvRewardhasil.setRating(lihatrapotModel.getRewardhasil());
+                tvRewardsikap.setRating(lihatrapotModel.getRewardsikap());
             }
 
             @Override

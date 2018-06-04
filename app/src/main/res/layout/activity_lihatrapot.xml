@@ -486,16 +486,16 @@
                             android:textSize="14dp"
                             android:textColor="#362240"
                             android:text="Reward Hasil Belajar"/>
-                        <TextView
+                        <RatingBar
                             android:id="@+id/tvrewardhasil"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunitosemibold"
                             android:gravity="center"
-                            android:textSize="12dp"
-                            android:textColor="#362240"/>
+                            style="@style/customRatingBar"
+                            android:numStars="3"
+                            android:stepSize="1"/>
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
@@ -518,16 +518,16 @@
                             android:textSize="14dp"
                             android:textColor="#362240"
                             android:text="Reward Sikap Belajar"/>
-                        <TextView
+                        <RatingBar
                             android:id="@+id/tvrewardsikap"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunitosemibold"
                             android:gravity="center"
-                            android:textSize="12dp"
-                            android:textColor="#362240"/>
+                            style="@style/customRatingBar"
+                            android:numStars="3"
+                            android:stepSize="1"/>
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
