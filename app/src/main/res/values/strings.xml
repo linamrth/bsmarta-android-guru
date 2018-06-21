@@ -8,4 +8,8 @@
     <string name="satu">Satu</string>
     <string name="dua">Dua</string>
     <string name="tiga">Tiga</string>
+    <string name="aboutus">About Us</string>
+    <string name="logout">Log Out</string>
+    <string name="editpassword">Edit Password</string>
+    <string name="grafik">Grafik Perkembangan</string>
 </resources>

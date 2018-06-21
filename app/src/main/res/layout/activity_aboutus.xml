@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Fitur.Menu.AboutUs"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/graylight">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:fontFamily="@font/cookie"
+                android:textSize="25dp"
+                android:text="Tentang Aplikasi"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="5dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:background="@color/white">
+                <TextView
+                    android:id="@+id/tentangaplikasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:text="B'Smart Rumah Belajar merupakan sebuah aplikasi monitoring perkembangan belajar siswa. Aplikasi ini dibangun untuk mempermudah guru dalam menginputkan hasil belajar siswa setiap tatap muka. Dan juga untuk mereminder guru pada saat jadwalnya mengajar"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:fontFamily="@font/cookie"
+                android:textSize="25dp"
+                android:text="Tentang B'Smart Rumah Belajar"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="5dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:background="@color/white">
+                <TextView
+                    android:id="@+id/tentangbsmart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:text="B’Smart Rumah Belajar adalah sebuah lembaga konsultan pendidikan yang berkonsentrasi pada pengembangan kecerdasan. Lembaga ini berdiri pada tanggal 10 Desember tahun 2007 di Surabaya. B’Smart Rumah Belajar berkonsentrasi pada program-program belajar yang ditujukan untuk mengembangkan serta mengoptimalkan potensi kecerdasan anak. Berbagai program belajar yang dikembangkan oleh B’Smart telah terbukti keberhasilannya. B’Smart Rumah Belajar memiliki dua buah program yang telah memiliki susunan lesson plan secara sempurna yaitu Cinta Baca dan Cinta Matika"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

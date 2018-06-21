@@ -45,7 +45,7 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
             holder.logo.setBackgroundResource(R.drawable.ic_check_circle_black_24dp);
         } else {
             status = "Belum Terisi";
-            holder.logo.setBackgroundResource(R.drawable.ic_highlight_off_black_24dp);
+            holder.logo.setBackgroundResource(R.drawable.ic_add_circle_black_24dp);
         }
         holder.tvStatus.setText(status);
         holder.llStatusrapot.setOnClickListener(new View.OnClickListener() {

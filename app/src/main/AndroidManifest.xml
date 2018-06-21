@@ -26,15 +26,15 @@
         <activity
             android:name=".Fitur.Menu.ButtomNavigation"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme2" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Fitur.Siswa.DetailsiswaActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme2" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Fitur.SemuaSiswa.DetailsemuasiswaActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme2" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Fitur.Siswa.IsirapotActivity"
             android:theme="@style/AppTheme2" />
@@ -43,9 +43,22 @@
             android:theme="@style/AppTheme2" />
         <activity
             android:name=".Fitur.Siswa.LihatrapotActivity"
-            android:theme="@style/AppTheme2"/>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".Fitur.SemuaSiswa.InputRapotActivity"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".Fitur.Menu.AboutUs"
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".Fitur.Menu.Logout" />
+        <activity
+            android:name=".Fitur.Menu.EditPassword"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".Fitur.Siswa.GrafikPerkembanganSiswa"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".Fitur.SemuaSiswa.GrafikPerkembanganSemuasiswa"
             android:theme="@style/AppTheme2" />
     </application>
 
