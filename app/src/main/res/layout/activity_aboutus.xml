@@ -20,6 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:fontFamily="@font/cookie"
                 android:textSize="25dp"
                 android:text="Tentang Aplikasi"/>
@@ -46,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:fontFamily="@font/cookie"
                 android:textSize="25dp"
                 android:text="Tentang B'Smart Rumah Belajar"/>
@@ -67,6 +69,35 @@
                     android:fontFamily="@font/nunitosemibold"
                     android:text="B’Smart Rumah Belajar adalah sebuah lembaga konsultan pendidikan yang berkonsentrasi pada pengembangan kecerdasan. Lembaga ini berdiri pada tanggal 10 Desember tahun 2007 di Surabaya. B’Smart Rumah Belajar berkonsentrasi pada program-program belajar yang ditujukan untuk mengembangkan serta mengoptimalkan potensi kecerdasan anak. Berbagai program belajar yang dikembangkan oleh B’Smart telah terbukti keberhasilannya. B’Smart Rumah Belajar memiliki dua buah program yang telah memiliki susunan lesson plan secara sempurna yaitu Cinta Baca dan Cinta Matika"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:textSize="13dp"
+                    android:text="--- Lina Meritha ---"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:textSize="11dp"
+                    android:text="--- D3 Teknik Informatika ---"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:textSize="11dp"
+                    android:text="--- Politeknik Elektronika Negeri Surabaya ---"/>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -1,11 +1,13 @@
 package com.linameritha.myapplication.Fitur.Siswa;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.linameritha.myapplication.Api.ApiServices;
+import com.linameritha.myapplication.Fitur.LoginForm.LoginForm;
+import com.linameritha.myapplication.Fitur.LoginForm.Session;
 import com.linameritha.myapplication.Fitur.Menu.AboutUs;
 import com.linameritha.myapplication.Fitur.Menu.EditPassword;
 import com.linameritha.myapplication.Model.Siswa.SiswaresultModel;
@@ -36,6 +40,7 @@ public class SiswaFragment extends Fragment {
     private RecyclerView rv;
     private SiswaAdapter siswaAdapter;
     private TextView tvNama, tvKelas, tvProgramlevel, tvLevel;
+    Session session;
 
     @Nullable
     @Override
@@ -48,6 +53,11 @@ public class SiswaFragment extends Fragment {
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("bsmart", Context.MODE_PRIVATE);
         rv = (RecyclerView) view.findViewById(R.id.rv);
+
+        session = new Session(getActivity());
+        if (!session.login()){
+            logout();
+        }
 
         ApiServices.services_get.getSiswa(sharedPreferences.getInt("idguru", 0)).enqueue(new Callback<SiswaresultModel>() {
             @Override
@@ -90,7 +100,7 @@ public class SiswaFragment extends Fragment {
                 getActivity().startActivity(intent1);
                 return true;
             case R.id.logout:
-                Toast.makeText(getActivity(), "Log Out Selected", Toast.LENGTH_SHORT).show();
+                logout();
                 return true;
             case R.id.editpassword:
                 Intent intent3 = new Intent(getActivity(), EditPassword.class);
@@ -98,5 +108,32 @@ public class SiswaFragment extends Fragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+////    @Override
+//    public void onBackPressed() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//        builder.setMessage("Apakah anda yakin ingin keluar ?")
+//                .setCancelable(false)
+//                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int i) {
+//                        getActivity().finish();
+//                    }
+//                })
+//                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int i) {
+//                        dialog.cancel();
+//                    }
+//                });
+//        AlertDialog alert = builder.create();
+//        alert.show();
+//    }
+
+    private void logout(){
+        session.setLogin(false, 0);
+        getActivity().finish();
+        startActivity(new Intent(getActivity(), LoginForm.class));
     }
 }

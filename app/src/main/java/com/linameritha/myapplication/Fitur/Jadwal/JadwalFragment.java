@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.linameritha.myapplication.Fitur.LoginForm.LoginForm;
+import com.linameritha.myapplication.Fitur.LoginForm.Session;
 import com.linameritha.myapplication.Fitur.Menu.AboutUs;
 import com.linameritha.myapplication.Fitur.Menu.EditPassword;
 import com.linameritha.myapplication.Model.Jadwal.JadwalModel;
@@ -30,6 +32,7 @@ public class JadwalFragment extends Fragment {
     private List<JadwalModel> dataJadwal = new ArrayList<>();
     private RecyclerView lv;
     private Button btnSenin, btnSelasa, btnRabu, btnKamis, btnJumat, btnSabtu;
+    Session session;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +49,11 @@ public class JadwalFragment extends Fragment {
         btnKamis = (Button) view.findViewById(R.id.btn_kamis);
         btnJumat = (Button) view.findViewById(R.id.btn_jumat);
         btnSabtu = (Button) view.findViewById(R.id.btn_sabtu);
+
+        session = new Session(getActivity());
+        if (!session.login()){
+            logout();
+        }
 
         RecyclerView.LayoutManager lvManager = new LinearLayoutManager(getContext());
         lv.setLayoutManager(lvManager);
@@ -118,7 +126,7 @@ public class JadwalFragment extends Fragment {
                 getActivity().startActivity(intent1);
                 return true;
             case R.id.logout:
-                Toast.makeText(getActivity(), "Log Out Selected", Toast.LENGTH_SHORT).show();
+                logout();
                 return true;
             case R.id.editpassword:
                 Intent intent3 = new Intent(getActivity(), EditPassword.class);
@@ -126,6 +134,12 @@ public class JadwalFragment extends Fragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logout(){
+        session.setLogin(false, 0);
+        getActivity().finish();
+        startActivity(new Intent(getActivity(), LoginForm.class));
     }
 
     private void setDataJadwalSenin() {

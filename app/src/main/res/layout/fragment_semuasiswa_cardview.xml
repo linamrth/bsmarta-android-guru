@@ -5,13 +5,12 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragmentsiswa"
-    android:padding="5dp">
+    android:padding="3dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cvsemuasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
         app:cardCornerRadius="5dp"
         app:elevation="10dp">
         <LinearLayout
@@ -33,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvnama"
                     android:gravity="center"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:fontFamily="@font/nunitosemibold"
                     android:textColor="@color/white" />
                 <TextView
@@ -42,7 +41,7 @@
                     android:id="@+id/tvkelas"
                     android:layout_below="@+id/tvnama"
                     android:gravity="center"
-                    android:textSize="14dp"
+                    android:textSize="13dp"
                     android:fontFamily="@font/nunitosemibold"
                     android:textColor="#362240" />
                 <TextView

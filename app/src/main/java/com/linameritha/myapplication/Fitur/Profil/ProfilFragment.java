@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.linameritha.myapplication.Api.ApiServices;
+import com.linameritha.myapplication.Fitur.LoginForm.LoginForm;
+import com.linameritha.myapplication.Fitur.LoginForm.Session;
 import com.linameritha.myapplication.Fitur.Menu.AboutUs;
 import com.linameritha.myapplication.Fitur.Menu.EditPassword;
 import com.linameritha.myapplication.Model.Profil.ModelResultProfile;
@@ -39,8 +41,7 @@ public class ProfilFragment extends Fragment {
     private ProfilfragmentAdapter profilfragmentAdapter;
     private TextView tvNamaguru,tvNamacabang,tvTelepon,tvAlamat;
     private RecyclerView rv;
-//    private Button btnlogout;
-//    Session session;
+    Session session;
 
     @Nullable
     @Override
@@ -59,19 +60,11 @@ public class ProfilFragment extends Fragment {
         tvNamacabang = view.findViewById(R.id.tv_namacabang);
         tvTelepon = view.findViewById(R.id.tv_telepon);
         tvAlamat = view.findViewById(R.id.tv_alamat);
-        //btnlogout = view.findViewById(R.id.btnlogout);
 
-//        session = new Session(getActivity());
-//        if (!session.login()){
-//            logout();
-//        }
-
-//        btnlogout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                logout();
-//            }
-//        });
+        session = new Session(getActivity());
+        if (!session.login()){
+            logout();
+        }
 
         ApiServices.services_get.getProfile(sharedPreferences.getInt("idguru",0)).enqueue(new Callback<ModelResultProfile>() {
             @Override
@@ -119,7 +112,7 @@ public class ProfilFragment extends Fragment {
                 getActivity().startActivity(intent1);
                 return true;
             case R.id.logout:
-                Toast.makeText(getActivity(), "Log Out Selected", Toast.LENGTH_SHORT).show();
+                logout();
                 return true;
             case R.id.editpassword:
                 Intent intent3 = new Intent(getActivity(), EditPassword.class);
@@ -129,9 +122,9 @@ public class ProfilFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-//    private void logout(){
-//        session.setLogin(false, 0);
-//        getActivity().finish();
-//        startActivity(new Intent(getActivity(), LoginForm.class));
-//    }
+    private void logout(){
+        session.setLogin(false, 0);
+        getActivity().finish();
+        startActivity(new Intent(getActivity(), LoginForm.class));
+    }
 }
