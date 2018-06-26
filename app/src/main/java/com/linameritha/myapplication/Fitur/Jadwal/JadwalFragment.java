@@ -1,6 +1,8 @@
 package com.linameritha.myapplication.Fitur.Jadwal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,33 +18,51 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.linameritha.myapplication.Api.ApiServices;
 import com.linameritha.myapplication.Fitur.LoginForm.LoginForm;
 import com.linameritha.myapplication.Fitur.LoginForm.Session;
 import com.linameritha.myapplication.Fitur.Menu.AboutUs;
 import com.linameritha.myapplication.Fitur.Menu.EditPassword;
+import com.linameritha.myapplication.Fitur.Siswa.SiswaAdapter;
 import com.linameritha.myapplication.Model.Jadwal.JadwalModel;
+import com.linameritha.myapplication.Model.Jadwal.JadwalresultModel;
+import com.linameritha.myapplication.Model.Profil.ModelSkillProfile;
 import com.linameritha.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class JadwalFragment extends Fragment {
-    private List<JadwalModel> dataJadwal = new ArrayList<>();
-    private RecyclerView lv;
+    private JadwalresultModel jadwalresultModel;
+    private RecyclerView rv;
+    private JadwalAdapter jadwalAdapter;
     private Button btnSenin, btnSelasa, btnRabu, btnKamis, btnJumat, btnSabtu;
+    private RelativeLayout empty;
     Session session;
+    Integer idguru;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_jadwal, null);
 
+        final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("bsmart", Context.MODE_PRIVATE);
+        idguru = sharedPreferences.getInt("idguru", 0);
+
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
+        rv = (RecyclerView) view.findViewById(R.id.rv);
+        empty = (RelativeLayout) view.findViewById(R.id.empty);
 
-        lv = (RecyclerView) view.findViewById(R.id.lv);
+        rv = (RecyclerView) view.findViewById(R.id.lv);
         btnSenin = (Button) view.findViewById(R.id.btn_senin);
         btnSelasa = (Button) view.findViewById(R.id.btn_selasa);
         btnRabu = (Button) view.findViewById(R.id.btn_rabu);
@@ -55,54 +75,80 @@ public class JadwalFragment extends Fragment {
             logout();
         }
 
+
         RecyclerView.LayoutManager lvManager = new LinearLayoutManager(getContext());
-        lv.setLayoutManager(lvManager);
-        lv.setItemAnimator(new DefaultItemAnimator());
-        lv.setAdapter(new JadwalAdapter(getContext(), dataJadwal));
+        rv.setLayoutManager(lvManager);
+        rv.setItemAnimator(new DefaultItemAnimator());
+        loadJadwal("Senin");
 
         btnSenin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setDataJadwalSenin();
+                loadJadwal("Senin");
             }
         });
 
         btnSelasa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setDataJadwalSelasa();
+                loadJadwal("Selasa");
             }
         });
 
         btnRabu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setDataJadwalRabu();
+                loadJadwal("Rabu");
             }
         });
 
         btnKamis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setDataJadwalKamis();
+                loadJadwal("Kamis");
             }
         });
 
         btnJumat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setDataJadwalJumat();
+                loadJadwal("Jumat");
             }
         });
 
         btnSabtu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setDataJadwalSabtu();
+                loadJadwal("Sabtu");
             }
         });
 
         return  view;
+    }
+
+    private void loadJadwal(String hari) {
+
+//        ApiServices.services_get.getJadwal("1_"+hari).enqueue(new Callback<JadwalresultModel>()
+        ApiServices.services_get.getJadwal( idguru+"_"+hari).enqueue(new Callback<JadwalresultModel>(){
+            @Override
+            public void onResponse(Call<JadwalresultModel> call, Response<JadwalresultModel> response) {
+                jadwalAdapter = new JadwalAdapter(getActivity(), response.body().getResults());
+                rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                rv.setAdapter(jadwalAdapter);
+                rv.getAdapter().notifyDataSetChanged();
+
+                if (jadwalAdapter.getItemCount() == 0) {
+                    empty.setVisibility(View.VISIBLE);
+                } else {
+                    empty.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JadwalresultModel> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
@@ -140,121 +186,5 @@ public class JadwalFragment extends Fragment {
         session.setLogin(false, 0);
         getActivity().finish();
         startActivity(new Intent(getActivity(), LoginForm.class));
-    }
-
-    private void setDataJadwalSenin() {
-        dataJadwal.clear();
-
-        JadwalModel model = new JadwalModel(
-                "10.00 - 11.00",
-                "Lina Meritha",
-                "Cinta Matika - 1",
-                "Kursus"
-        );
-        dataJadwal.add(model);
-
-        model = new JadwalModel(
-                "10.00 - 11.00",
-                "Sherly Febrina Luhukay",
-                "Cinta Baca - 1",
-                "Kursus"
-        );
-        dataJadwal.add(model);
-
-        model = new JadwalModel(
-                "10.00 - 11.00",
-                "Lina Meritha",
-                "Cinta Bahasa - 1",
-                "Kursus"
-        );
-        dataJadwal.add(model);
-
-        model = new JadwalModel(
-                "10.00 - 11.00",
-                "Raditya Putranto",
-                "Cinta Bahasa - 1",
-                "Trial"
-        );
-        dataJadwal.add(model);
-
-        model = new JadwalModel(
-                "10.00 - 11.00",
-                "Kila Kiantari Katasya",
-                "Cinta Bahasa - 1",
-                "Kursus"
-        );
-        dataJadwal.add(model);
-
-        lv.getAdapter().notifyDataSetChanged();
-    }
-
-    private void setDataJadwalSelasa() {
-        dataJadwal.clear();
-
-        JadwalModel model = new JadwalModel(
-                "10.00 - 11.00",
-                "Ahmad Ardiansyah",
-                "Cinta Kamu - 4ever",
-                "Private"
-        );
-        dataJadwal.add(model);
-
-        lv.getAdapter().notifyDataSetChanged();
-    }
-
-    private void setDataJadwalRabu() {
-        dataJadwal.clear();
-
-        JadwalModel model = new JadwalModel(
-                "10.00 - 11.00",
-                "Muhammad Fadhil Akbar",
-                "Cinta Kamu - 4ever",
-                "Private"
-        );
-        dataJadwal.add(model);
-
-        lv.getAdapter().notifyDataSetChanged();
-    }
-
-    private void setDataJadwalKamis() {
-        dataJadwal.clear();
-
-        JadwalModel model = new JadwalModel(
-                "10.00 - 11.00",
-                "Muhibush Sulhi Muhammad",
-                "Cinta Kamu - 4ever",
-                "Private"
-        );
-        dataJadwal.add(model);
-
-        lv.getAdapter().notifyDataSetChanged();
-    }
-
-    private void setDataJadwalJumat() {
-        dataJadwal.clear();
-
-        JadwalModel model = new JadwalModel(
-                "10.00 - 11.00",
-                "Muhammad Ali Rodhi",
-                "Cinta Kamu - 4ever",
-                "Private"
-        );
-        dataJadwal.add(model);
-
-        lv.getAdapter().notifyDataSetChanged();
-    }
-
-    private void setDataJadwalSabtu() {
-        dataJadwal.clear();
-
-        JadwalModel model = new JadwalModel(
-                "10.00 - 11.00",
-                "Shela Ernita Sari",
-                "Cinta Kamu - 4ever",
-                "Private"
-        );
-        dataJadwal.add(model);
-
-        lv.getAdapter().notifyDataSetChanged();
     }
 }

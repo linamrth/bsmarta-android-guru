@@ -1,5 +1,6 @@
 package com.linameritha.myapplication.Api;
 
+import com.linameritha.myapplication.Model.Jadwal.JadwalresultModel;
 import com.linameritha.myapplication.Model.Login.ModelResultLogin;
 import com.linameritha.myapplication.Model.Profil.ModelResultProfile;
 import com.linameritha.myapplication.Model.SemuaSiswa.DetailsemuasiswaresultModel;
@@ -104,5 +105,8 @@ public class ApiServices {
 
         @GET("gurusiswa/allsiswaguru/{id}")
         Call<GurusemuasiswaModel> getGurusemuasiswa(@Path("id") int id);
+
+        @GET("gurujadwal/index")
+        Call<JadwalresultModel> getJadwal(@Query("id") String id);
     }
 }

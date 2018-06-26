@@ -1,69 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="3dp">
 
-    <RelativeLayout
-        android:id="@+id/lvisi"
-        android:layout_marginTop="5dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvjam"
-            android:gravity="center"
-            android:text="08.00 - 09.00"
-            android:textSize="12dp"
-            android:fontFamily="@font/nunitosemibold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvnamasiswa"
-            android:gravity="center"
-            android:layout_below="@+id/tvjam"
-            android:text="Lina Meritha"
-            android:textSize="14dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/nunitosemibold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvprogramlevel"
-            android:gravity="center"
-            android:layout_below="@+id/tvnamasiswa"
-            android:text="Cinta Baca - 2"
-            android:textSize="14dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/nunitosemibold" />
-
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp">
         <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/tvnamasiswa"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/background_status"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvstatus"
-                android:gravity="right"
-                android:layout_below="@+id/tvnamasiswa"
-                android:text="Kursus"
-                android:textSize="13dp"
-                android:fontFamily="@font/nunitosemibold"
-                android:textColor="@color/white"/>
-        </LinearLayout>
-
-        <view
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorPrimary"/>
-
-    </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvjam"
+                    android:gravity="center"
+                    android:text="08.00 - 09.00"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/nunitosemibold"
+                    android:textColor="@color/colorPrimary"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvjadwal"
+                    android:gravity="center"
+                    android:layout_below="@+id/tvjam"
+                    android:text="Lina Meritha - Cinta Baca 1 - (K)"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/nunitosemibold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_marginTop="5dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
