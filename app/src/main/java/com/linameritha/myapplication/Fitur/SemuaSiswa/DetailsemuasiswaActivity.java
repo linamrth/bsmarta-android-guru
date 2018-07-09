@@ -75,7 +75,8 @@ public class DetailsemuasiswaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.grafik:
-                Intent intent = new Intent(this, GrafikPerkembanganSemuasiswa.class);
+                Intent intent = new Intent(this, GrafikPerkembanganSiswa.class);
+                intent.putExtra("idsiswabelajar", idsiswabelajar);
                 startActivity(intent);
                 return true;
         }

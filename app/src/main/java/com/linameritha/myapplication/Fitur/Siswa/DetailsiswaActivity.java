@@ -70,6 +70,7 @@ public class DetailsiswaActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.grafik:
                 Intent intent = new Intent(this, GrafikPerkembanganSiswa.class);
+                intent.putExtra("idsiswabelajar", idsiswabelajar);
                 startActivity(intent);
                 return true;
         }

@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvjam"
                     android:gravity="center"
-                    android:text="08.00 - 09.00"
+                    android:text=""
                     android:textSize="13dp"
                     android:fontFamily="@font/nunitosemibold"
                     android:textColor="@color/colorPrimary"/>
@@ -37,7 +37,7 @@
                     android:id="@+id/tvjadwal"
                     android:gravity="center"
                     android:layout_below="@+id/tvjam"
-                    android:text="Lina Meritha - Cinta Baca 1 - (K)"
+                    android:text=""
                     android:textSize="14dp"
                     android:fontFamily="@font/nunitosemibold" />
                 <View

@@ -75,7 +75,6 @@ public class JadwalFragment extends Fragment {
             logout();
         }
 
-
         RecyclerView.LayoutManager lvManager = new LinearLayoutManager(getContext());
         rv.setLayoutManager(lvManager);
         rv.setItemAnimator(new DefaultItemAnimator());

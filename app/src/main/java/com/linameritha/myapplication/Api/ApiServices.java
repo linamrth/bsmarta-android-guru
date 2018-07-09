@@ -10,6 +10,7 @@ import com.linameritha.myapplication.Model.SemuaSiswa.MaterihalamansemuasiswaMod
 import com.linameritha.myapplication.Model.SemuaSiswa.SemuasiswaresultModel;
 import com.linameritha.myapplication.Model.SemuaSiswa.ViewrapotModel;
 import com.linameritha.myapplication.Model.Siswa.DetailsiswaresultModel;
+import com.linameritha.myapplication.Model.Siswa.GrafikPerkembanganModel;
 import com.linameritha.myapplication.Model.Siswa.GuruModel;
 import com.linameritha.myapplication.Model.Siswa.IsirapotresultModel;
 import com.linameritha.myapplication.Model.Siswa.LihatrapotModel;
@@ -76,6 +77,9 @@ public class ApiServices {
         @GET("guruprofil/{id}")
         Call<ModelResultProfile> getProfile(@Path("id") int id);
 
+        @GET("gurujadwal/index")
+        Call<JadwalresultModel> getJadwal(@Query("id") String id);
+
         @GET("gurusiswa/index/{id}")
         Call<SiswaresultModel> getSiswa(@Path("id") int id);
 
@@ -90,6 +94,9 @@ public class ApiServices {
 
         @GET("gurusiswa/materihalaman")
         Call<MaterihalamanModel> getMaterihalaman(@Query("id") String id);
+
+        @GET("gurusiswa/grafikperkembangan/{id}")
+        Call<GrafikPerkembanganModel> getGrafikPerkembangan(@Path("id") int id);
 
         @GET("gurusiswa/allsiswa/{id}")
         Call<SemuasiswaresultModel> getSemuasiswa(@Path("id")int id);
@@ -106,7 +113,9 @@ public class ApiServices {
         @GET("gurusiswa/allsiswaguru/{id}")
         Call<GurusemuasiswaModel> getGurusemuasiswa(@Path("id") int id);
 
-        @GET("gurujadwal/index")
-        Call<JadwalresultModel> getJadwal(@Query("id") String id);
+        @GET("gurusiswa/allsiswagrafikperkembangan/{id}")
+        Call<GrafikPerkembanganModel> getGrafikPerkembangansemuasiswa(@Path("id") int id);
+
+
     }
 }
