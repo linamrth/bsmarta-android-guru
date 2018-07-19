@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linameritha.myapplication.Fitur.Siswa.DetailsiswaActivity;
@@ -16,6 +18,8 @@ import com.linameritha.myapplication.Model.Siswa.SiswaModel;
 import com.linameritha.myapplication.R;
 
 import java.util.ArrayList;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.ItemRowHolder>{
     ArrayList<SemuasiswaModel> dataSemuasiswa;
@@ -55,6 +59,7 @@ public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.It
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
         protected TextView tvNama, tvKelas, tvProgram, tvLevel;
+        protected ImageView imgNama, imgKelas, imgProgram, imgLevel;
         protected CardView cvSemuasiswa;
         public ItemRowHolder(View view) {
             super(view);
@@ -63,6 +68,10 @@ public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.It
             this.tvKelas = (TextView) view.findViewById(R.id.tvkelas);
             this.tvProgram = (TextView) view.findViewById(R.id.tvprogram);
             this.tvLevel = (TextView) view.findViewById(R.id.tvlevel);
+            this.imgNama = (ImageView) view.findViewById(R.id.imgnama);
+            this.imgKelas = (ImageView) view.findViewById(R.id.imgkelas);
+            this.imgProgram = (ImageView) view.findViewById(R.id.imgprogram);
+            this.imgLevel = (ImageView) view.findViewById(R.id.imglevel);
             this.cvSemuasiswa = (CardView) view.findViewById(R.id.cvsemuasiswa);
         }
     }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linameritha.myapplication.Model.Siswa.SiswaModel;
@@ -53,6 +54,7 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ItemRowHolde
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
         protected TextView tvNama, tvKelas, tvProgram, tvLevel;
+        protected ImageView imgNama, imgKelas, imgProgram, imgLevel;
         protected CardView cvSiswa;
         public ItemRowHolder(View view) {
             super(view);
@@ -61,6 +63,10 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ItemRowHolde
             this.tvKelas = (TextView) view.findViewById(R.id.tvkelas);
             this.tvProgram = (TextView) view.findViewById(R.id.tvprogram);
             this.tvLevel = (TextView) view.findViewById(R.id.tvlevel);
+            this.imgNama = (ImageView) view.findViewById(R.id.imgnama);
+            this.imgKelas = (ImageView) view.findViewById(R.id.imgkelas);
+            this.imgProgram = (ImageView) view.findViewById(R.id.imgprogram);
+            this.imgLevel = (ImageView) view.findViewById(R.id.imglevel);
             this.cvSiswa = (CardView) view.findViewById(R.id.cvsiswa);
         }
     }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragmentsiswa"
+    xmlns:xmnls="http://schemas.android.com/tools"
+    android:id="@+id/fragmentsemuasiswa"
     android:padding="3dp">
 
     <android.support.v7.widget.CardView
@@ -18,7 +18,7 @@
             android:orientation="horizontal"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:background="@color/colorPrimary"
+            android:background="#87CEFA"
             android:layout_height="match_parent"
             android:paddingLeft="10dp">
 
@@ -27,41 +27,93 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center">
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvnama"
-                    android:gravity="center"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/nunitosemibold"
-                    android:textColor="@color/white" />
-                <TextView
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/imgnama"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        xmnls:srcCompat="@drawable/ic_face_black_24dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:id="@+id/tvnama"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:textColor="#362240"
+                        android:text="Kila Kiantari K"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvkelas"
-                    android:layout_below="@+id/tvnama"
-                    android:gravity="center"
-                    android:textSize="13dp"
-                    android:fontFamily="@font/nunitosemibold"
-                    android:textColor="#362240" />
-                <TextView
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/imgkelas"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        xmnls:srcCompat="@drawable/ic_class_black_24dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:id="@+id/tvkelas"
+                        android:layout_below="@+id/tvnama"
+                        android:gravity="center"
+                        android:textSize="13dp"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:textColor="#362240"
+                        android:text="TK B"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvprogram"
-                    android:layout_below="@+id/tvkelas"
-                    android:gravity="center"
-                    android:textSize="13dp"
-                    android:textColor="#362240"
-                    android:fontFamily="@font/nunitosemibold" />
-                <TextView
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/imgprogram"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        xmnls:srcCompat="@drawable/ic_lightbulb_outline_black_24dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:id="@+id/tvprogram"
+                        android:layout_below="@+id/tvkelas"
+                        android:gravity="center"
+                        android:textSize="13dp"
+                        android:textColor="#362240"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:text="Cinta Baca"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvlevel"
-                    android:layout_below="@+id/tvkelas"
-                    android:gravity="center"
-                    android:textSize="13dp"
-                    android:textColor="#362240"
-                    android:fontFamily="@font/nunitosemibold" />
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/imglevel"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        xmnls:srcCompat="@drawable/ic_grade_black_24dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:id="@+id/tvlevel"
+                        android:layout_below="@+id/tvkelas"
+                        android:gravity="center"
+                        android:textSize="13dp"
+                        android:textColor="#362240"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:text="Level 1"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

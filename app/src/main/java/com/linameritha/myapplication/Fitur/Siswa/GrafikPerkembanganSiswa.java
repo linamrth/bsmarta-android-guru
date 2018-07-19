@@ -32,7 +32,6 @@ public class GrafikPerkembanganSiswa extends AppCompatActivity {
         Intent intent = getIntent();
         Integer idsiswabelajar = intent.getIntExtra("idsiswabelajar", 0);
         Log.d("idsiswabelajar", String.valueOf(idsiswabelajar));
-        Toast.makeText(this, "ID Siswa : " + idsiswabelajar, Toast.LENGTH_SHORT).show();
 
         lineView = (LineView) findViewById(R.id.line_view);
 
@@ -42,30 +41,43 @@ public class GrafikPerkembanganSiswa extends AppCompatActivity {
                 grafikPerkembanganModel = response.body();
 //                Toast.makeText(GrafikPerkembanganSiswa.this,  "Code : " + response.code(), Toast.LENGTH_SHORT).show();
 
-                //Untuk Pertemuan
-                Integer pertemuan = grafikPerkembanganModel.getPertemuan().size();
-                ArrayList<String> mLabels = new ArrayList<String>();
-                for (int i = 0; i < pertemuan; i++) {
-                    mLabels.add(grafikPerkembanganModel.getPertemuan().get(i).toString());
-                }
-                lineView.setBottomTextList(mLabels);
-                lineView.setColorArray(new int[] {
-                        Color.parseColor("#F44336"), Color.parseColor("#9C27B0"),
-                        Color.parseColor("#2196F3"), Color.parseColor("#009688")
-                });
-                lineView.setDrawDotLine(true);
-                lineView.setShowPopup(LineView.SHOW_POPUPS_NONE);
+                if (response.isSuccessful()){
+                    //Untuk Pertemuan
+                    Integer pertemuan = grafikPerkembanganModel.getPertemuan().size();
+                    ArrayList<String> mLabels = new ArrayList<String>();
+                    for (int i = 0; i < pertemuan; i++) {
+                        mLabels.add("Pertemuan " + grafikPerkembanganModel.getPertemuan().get(i).toString());
+                    }
+                    lineView.setBottomTextList(mLabels);
+                    lineView.setColorArray(new int[] {
+                            Color.parseColor("#F44336"), Color.parseColor("#9C27B0"),
+                            Color.parseColor("#2196F3"), Color.parseColor("#009688")
+                    });
+                    lineView.setDrawDotLine(true);
+                    lineView.setShowPopup(LineView.SHOW_POPUPS_NONE);
 
-                //Untuk Data Grafik
-                Integer hasiltarget = grafikPerkembanganModel.getHasiltarget().size();
-                ArrayList<Integer> dataList = new ArrayList<>();
-                for (int i = 0; i < hasiltarget; i++){
-                    int hasil = Integer.parseInt(grafikPerkembanganModel.getHasiltarget().get(i));
-                    dataList.add(hasil);
+                    //Untuk Data Target
+                    ArrayList<Integer> targetlist = new ArrayList<>();
+                    for (int i = 0; i < grafikPerkembanganModel.getTarget().size(); i++){
+                        targetlist.add(grafikPerkembanganModel.getTarget().get(i));
+                    }
+
+                    //Untuk Data Hasil Ketercapaian
+                    Integer hasiltarget = grafikPerkembanganModel.getHasiltarget().size();
+                    ArrayList<Integer> dataList = new ArrayList<>();
+                    for (int i = 0; i < hasiltarget; i++){
+                        int hasil = Integer.parseInt(grafikPerkembanganModel.getHasiltarget().get(i));
+                        dataList.add(hasil);
+                    }
+
+                    ArrayList<ArrayList<Integer>> dataLists = new ArrayList<>();
+                    dataLists.add(targetlist);
+                    dataLists.add(dataList);
+                    lineView.setDataList(dataLists);
                 }
-                ArrayList<ArrayList<Integer>> dataLists = new ArrayList<>();
-                dataLists.add(dataList);
-                lineView.setDataList(dataLists);
+                else {
+                    Toast.makeText(GrafikPerkembanganSiswa.this, "** Belum Ada Data **", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

@@ -123,7 +123,7 @@ public class IsirapotActivity extends AppCompatActivity {
 
 
                 if(hasil.getText().toString().isEmpty() || catatanguru.getText().toString().isEmpty() || hal.getText().toString().isEmpty() || materi.getText().toString().isEmpty()) {
-                    Toast.makeText(IsirapotActivity.this, "Mohon legkapi form", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IsirapotActivity.this, "Mohon Legkapi Form!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     String materi1 = materi.getText().toString();
@@ -138,11 +138,11 @@ public class IsirapotActivity extends AppCompatActivity {
                                 String status = response.body().getStatus();
 
                                 if(status.equals("OK")) {
-                                    Toast.makeText(IsirapotActivity.this, "Berhasil input rapot", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(IsirapotActivity.this, "Berhasil Input Rapot!", Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                                 else {
-                                    Toast.makeText(IsirapotActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(IsirapotActivity.this, "Gagal Input Rapot!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }

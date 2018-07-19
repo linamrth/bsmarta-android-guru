@@ -29,6 +29,7 @@ import com.linameritha.myapplication.Fitur.Menu.AboutUs;
 import com.linameritha.myapplication.Fitur.Menu.EditPassword;
 import com.linameritha.myapplication.Fitur.Siswa.SiswaAdapter;
 import com.linameritha.myapplication.Model.Jadwal.JadwalModel;
+import com.linameritha.myapplication.Model.Jadwal.JadwalModell;
 import com.linameritha.myapplication.Model.Jadwal.JadwalresultModel;
 import com.linameritha.myapplication.Model.Profil.ModelSkillProfile;
 import com.linameritha.myapplication.R;
@@ -45,6 +46,7 @@ public class JadwalFragment extends Fragment {
     private RecyclerView rv;
     private JadwalAdapter jadwalAdapter;
     private Button btnSenin, btnSelasa, btnRabu, btnKamis, btnJumat, btnSabtu;
+    private TextView hariharian;
     private RelativeLayout empty;
     Session session;
     Integer idguru;
@@ -62,6 +64,7 @@ public class JadwalFragment extends Fragment {
         rv = (RecyclerView) view.findViewById(R.id.rv);
         empty = (RelativeLayout) view.findViewById(R.id.empty);
 
+        hariharian = (TextView) view.findViewById(R.id.tvhari);
         rv = (RecyclerView) view.findViewById(R.id.lv);
         btnSenin = (Button) view.findViewById(R.id.btn_senin);
         btnSelasa = (Button) view.findViewById(R.id.btn_selasa);
@@ -131,6 +134,11 @@ public class JadwalFragment extends Fragment {
         ApiServices.services_get.getJadwal( idguru+"_"+hari).enqueue(new Callback<JadwalresultModel>(){
             @Override
             public void onResponse(Call<JadwalresultModel> call, Response<JadwalresultModel> response) {
+                //Untuk menampilkan hari
+                JadwalresultModel resultModel = response.body();
+                hariharian.setText(resultModel.getResults().getHari());
+
+                //untuk menampilkan list jadwal
                 jadwalAdapter = new JadwalAdapter(getActivity(), response.body().getResults());
                 rv.setLayoutManager(new LinearLayoutManager(getActivity()));
                 rv.setAdapter(jadwalAdapter);
