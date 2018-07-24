@@ -68,10 +68,10 @@ public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.It
             this.tvKelas = (TextView) view.findViewById(R.id.tvkelas);
             this.tvProgram = (TextView) view.findViewById(R.id.tvprogram);
             this.tvLevel = (TextView) view.findViewById(R.id.tvlevel);
-            this.imgNama = (ImageView) view.findViewById(R.id.imgnama);
-            this.imgKelas = (ImageView) view.findViewById(R.id.imgkelas);
-            this.imgProgram = (ImageView) view.findViewById(R.id.imgprogram);
-            this.imgLevel = (ImageView) view.findViewById(R.id.imglevel);
+            this.imgNama = (ImageView) view.findViewById(R.id.imgnama1);
+            this.imgKelas = (ImageView) view.findViewById(R.id.imgkelas1);
+            this.imgProgram = (ImageView) view.findViewById(R.id.imgprogram1);
+            this.imgLevel = (ImageView) view.findViewById(R.id.imglevel1);
             this.cvSemuasiswa = (CardView) view.findViewById(R.id.cvsemuasiswa);
         }
     }

@@ -1,5 +1,6 @@
 package com.linameritha.myapplication.Api;
 
+import com.linameritha.myapplication.Model.Editpassword.EditpasswordResultModel;
 import com.linameritha.myapplication.Model.Jadwal.JadwalresultModel;
 import com.linameritha.myapplication.Model.Login.ModelResultLogin;
 import com.linameritha.myapplication.Model.Profil.ModelResultProfile;
@@ -26,7 +27,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import retrofit2.http.Url;
 
 public class ApiServices {
     public static String BASE_URL = "http://lina.jagopesan.com/admin/api/";
@@ -70,6 +70,14 @@ public class ApiServices {
                 @Field("catatanguru") String catatanguru,
                 @Field("rewardhasil") Integer rewardhasil,
                 @Field("rewardsikap") Integer rewardsikap
+        );
+
+        @FormUrlEncoded
+        @POST("editpassword/editpassword")
+        Call<EditpasswordResultModel> editpassword(
+                @Field("_id") Integer _id,
+                @Field("password") String password,
+                @Field("repeatedPassword") String repeatedPassword
         );
     }
     

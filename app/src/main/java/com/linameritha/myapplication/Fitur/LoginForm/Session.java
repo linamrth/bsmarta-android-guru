@@ -14,9 +14,10 @@ public class Session {
         editor = prefs.edit();
     }
 
-    public void setLogin(boolean login, Integer idguru){
+    public void setLogin(boolean login, Integer idguru, Integer id){
         editor.putBoolean("login", login);
         editor.putInt("idguru", idguru);
+        editor.putInt("iduser", id);
         editor.commit();
     }
 

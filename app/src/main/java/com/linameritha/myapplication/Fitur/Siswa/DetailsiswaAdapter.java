@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.linameritha.myapplication.Model.Siswa.DetailsiswaModel;
 import com.linameritha.myapplication.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.ItemRowHolder> {
@@ -35,6 +37,7 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
     public void onBindViewHolder(ItemRowHolder holder, final int i) {
         final DetailsiswaModel detailsiswaModel = dataDetailsiswa.get(i);
 
+        holder.tvPertemuanke.setText("Pertemuan Ke "+ String.valueOf(i + 1));
         holder.tvHari.setText(dataDetailsiswa.get(i).getHari());
         holder.tvTanggal.setText(dataDetailsiswa.get(i).getTanggal());
         holder.tvNamaguru.setText(dataDetailsiswa.get(i).getNamaguru());
@@ -74,12 +77,13 @@ public class DetailsiswaAdapter extends RecyclerView.Adapter<DetailsiswaAdapter.
     }
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
-        protected TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
+        protected TextView tvPertemuanke, tvHari, tvTanggal, tvNamaguru, tvStatus;
         protected ImageView logo;
         protected LinearLayout llStatusrapot;
         public ItemRowHolder(View view) {
             super(view);
 
+            this.tvPertemuanke = (TextView) view.findViewById(R.id.tvpertemuanke);
             this.tvHari = (TextView) view.findViewById(R.id.tvhari);
             this.tvTanggal = (TextView) view.findViewById(R.id.tvtanggal);
             this.tvNamaguru = (TextView) view.findViewById(R.id.tvnamaguru);

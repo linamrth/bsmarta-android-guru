@@ -36,6 +36,7 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
     public void onBindViewHolder(DetailsemuasiswaAdapter.ItemRowHolder holder, final int i) {
         final DetailsemuasiswaModel detailsemuasiswaModel = dataDetailsemuasiswa.get(i);
 
+        holder.tvPertemuanke.setText("Pertemuan Ke "+ String.valueOf(i + 1));
         holder.tvHari.setText(dataDetailsemuasiswa.get(i).getHari());
         holder.tvTanggal.setText(dataDetailsemuasiswa.get(i).getTanggal());
         holder.tvNamaguru.setText(dataDetailsemuasiswa.get(i).getNamaguru());
@@ -73,12 +74,13 @@ public class DetailsemuasiswaAdapter extends RecyclerView.Adapter<Detailsemuasis
     }
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
-        protected TextView tvHari, tvTanggal, tvNamaguru, tvStatus;
+        protected TextView tvPertemuanke, tvHari, tvTanggal, tvNamaguru, tvStatus;
         protected ImageView logo;
         protected LinearLayout llStatusrapot;
         public ItemRowHolder(View view) {
             super(view);
 
+            this.tvPertemuanke = (TextView) view.findViewById(R.id.tvpertemuanke);
             this.tvHari = (TextView) view.findViewById(R.id.tvhari);
             this.tvTanggal = (TextView) view.findViewById(R.id.tvtanggal);
             this.tvNamaguru = (TextView) view.findViewById(R.id.tvnamaguru);
