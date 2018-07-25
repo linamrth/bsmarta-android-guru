@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fitur.SemuaSiswa.GrafikPerkembanganSemuasiswa">
 
     <LinearLayout
@@ -11,12 +12,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="5dp">
+        android:padding="3dp"
+        android:paddingBottom="10dp">
         <TextView
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/cookie"
             android:gravity="center"
             android:text="Grafik Perkembangan Belajar Siswa"
@@ -28,83 +30,33 @@
             android:layout_marginTop="5dp"/>
     </LinearLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="82dp">
-
-        <view
-            android:id="@+id/line_view"
-            class="im.dacer.androidcharts.LineView"
-            android:layout_width="wrap_content"
-            android:layout_height="350dp" />
-
-    </HorizontalScrollView>
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 
     <LinearLayout
-        android:layout_marginTop="460dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/nunitosemibold"
-            android:textSize="12dp"
-            android:text="Keterangan : "/>
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:padding="8dp"
-                android:gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:background="#9C27B0"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"/>
-
-                <TextView
-                    android:layout_marginLeft="3dp"
-                    android:fontFamily="@font/nunitosemibold"
-                    android:text="Hasil Ketercapaian"
-                    android:textSize="12dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:padding="8dp"
-                android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:background="#F44336"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"/>
-
-                <TextView
-                    android:layout_marginLeft="3dp"
-                    android:fontFamily="@font/nunitosemibold"
-                    android:text="Target Ketercapaian"
-                    android:textSize="12dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-        </LinearLayout>
-
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunitosemibold"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:text="Materi : "
+            android:textColor="#362240"/>
+        <TextView
+            android:id="@+id/materi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunitosemibold"
+            android:padding="5dp"
+            android:textSize="13dp"
+            android:hint="[Belum Memilih Ketercapaian Hasil Belajar]"
+            android:textColor="#362240"
+            />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

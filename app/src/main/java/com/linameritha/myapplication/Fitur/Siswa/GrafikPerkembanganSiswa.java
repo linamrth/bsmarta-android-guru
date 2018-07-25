@@ -6,13 +6,23 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.linameritha.myapplication.Api.ApiServices;
 import com.linameritha.myapplication.Model.Siswa.GrafikPerkembanganModel;
 import com.linameritha.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import im.dacer.androidcharts.LineView;
 import retrofit2.Call;
@@ -20,63 +30,66 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class GrafikPerkembanganSiswa extends AppCompatActivity {
-    private GrafikPerkembanganModel grafikPerkembanganModel;
-    private LineView lineView;
+    private int idSiswa;
+    private LineChart chart;
+    private TextView materi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grafik_perkembangan_siswa);
-        setTitle("Grafik Perkembangan");
+        setTitle("Grafik Perkembangan Belajar");
 
-        Intent intent = getIntent();
-        Integer idsiswabelajar = intent.getIntExtra("idsiswabelajar", 0);
-        Log.d("idsiswabelajar", String.valueOf(idsiswabelajar));
+        chart = findViewById(R.id.chart);
+        materi = findViewById(R.id.materi);
 
-        lineView = (LineView) findViewById(R.id.line_view);
+        idSiswa = getIntent().getIntExtra("idsiswabelajar", 0);
 
-        ApiServices.services_get.getGrafikPerkembangan(idsiswabelajar).enqueue(new Callback<GrafikPerkembanganModel>() {
+        ApiServices.services_get.getGrafikPerkembangan(idSiswa).enqueue(new Callback<GrafikPerkembanganModel>() {
             @Override
-            public void onResponse(Call<GrafikPerkembanganModel> call, Response<GrafikPerkembanganModel> response) {
-                grafikPerkembanganModel = response.body();
-//                Toast.makeText(GrafikPerkembanganSiswa.this,  "Code : " + response.code(), Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<GrafikPerkembanganModel> call, final Response<GrafikPerkembanganModel> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equals("OK")) {
+                        List<Entry> entries = new ArrayList<Entry>();
+                        for (int i = 0; i < response.body().getHasiltarget().size(); i++) {
+                            entries.add(new Entry(response.body().getPertemuan().get(i).floatValue(), response.body().getTarget().get(i).floatValue()));
+                        }
+                        LineDataSet dataSet = new LineDataSet(entries, "Nilai yang harus dicapai");
+                        dataSet.setLineWidth(3);
+                        dataSet.setColor(R.color.colorPrimary);
 
-                if (response.isSuccessful()){
-                    //Untuk Pertemuan
-                    Integer pertemuan = grafikPerkembanganModel.getPertemuan().size();
-                    ArrayList<String> mLabels = new ArrayList<String>();
-                    for (int i = 0; i < pertemuan; i++) {
-                        mLabels.add("Pertemuan " + grafikPerkembanganModel.getPertemuan().get(i).toString());
+                        List<Entry> hasilEntry = new ArrayList<Entry>();
+                        for (int i = 0; i < response.body().getHasiltarget().size(); i++) {
+                            hasilEntry.add(new Entry(response.body().getPertemuan().get(i).floatValue(), Float.parseFloat(response.body().getHasiltarget().get(i))));
+                        }
+                        LineDataSet hasilDataset = new LineDataSet(hasilEntry, "Ketercapaian hasil belajar");
+                        hasilDataset.setLineWidth(6);
+                        hasilDataset.setColor(Color.rgb(255, 40, 0));
+
+                        List<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+
+                        dataSets.add(hasilDataset);
+                        dataSets.add(dataSet);
+
+                        LineData lineHasilData = new LineData(dataSets);
+
+                        chart.setData(lineHasilData);
+                        chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+                        chart.getDescription().setText("Pertemuan");
+                        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+                            @Override
+                            public void onValueSelected(Entry e, Highlight h) {
+                                Integer t = Math.round(h.getX()) - 1;
+                                materi.setText(response.body().getMateri().get(t));
+                            }
+
+                            @Override
+                            public void onNothingSelected() {
+
+                            }
+                        });
+                        chart.invalidate();
                     }
-                    lineView.setBottomTextList(mLabels);
-                    lineView.setColorArray(new int[] {
-                            Color.parseColor("#F44336"), Color.parseColor("#9C27B0"),
-                            Color.parseColor("#2196F3"), Color.parseColor("#009688")
-                    });
-                    lineView.setDrawDotLine(true);
-                    lineView.setShowPopup(LineView.SHOW_POPUPS_NONE);
-
-                    //Untuk Data Target
-                    ArrayList<Integer> targetlist = new ArrayList<>();
-                    for (int i = 0; i < grafikPerkembanganModel.getTarget().size(); i++){
-                        targetlist.add(grafikPerkembanganModel.getTarget().get(i));
-                    }
-
-                    //Untuk Data Hasil Ketercapaian
-                    Integer hasiltarget = grafikPerkembanganModel.getHasiltarget().size();
-                    ArrayList<Integer> dataList = new ArrayList<>();
-                    for (int i = 0; i < hasiltarget; i++){
-                        int hasil = Integer.parseInt(grafikPerkembanganModel.getHasiltarget().get(i));
-                        dataList.add(hasil);
-                    }
-
-                    ArrayList<ArrayList<Integer>> dataLists = new ArrayList<>();
-                    dataLists.add(targetlist);
-                    dataLists.add(dataList);
-                    lineView.setDataList(dataLists);
-                }
-                else {
-                    Toast.makeText(GrafikPerkembanganSiswa.this, "** Belum Ada Data **", Toast.LENGTH_SHORT).show();
                 }
             }
 

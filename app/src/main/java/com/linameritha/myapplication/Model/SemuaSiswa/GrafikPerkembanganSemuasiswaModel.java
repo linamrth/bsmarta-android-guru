@@ -19,6 +19,11 @@ public class GrafikPerkembanganSemuasiswaModel {
     @SerializedName("hasiltarget")
     @Expose
     private List<String> hasiltarget;
+    @SerializedName("materi")
+    @Expose
+    private List<String> materi;
+
+    public  List<String> getMateri(){ return materi; }
 
     public String getStatus() {
         return status;
