@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.linameritha.myapplication.Model.Siswa.SiswaModel;
 import com.linameritha.myapplication.R;
 
@@ -38,6 +39,7 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ItemRowHolde
         holder.tvKelas.setText(dataSiswa.get(i).getKelas());
         holder.tvProgram.setText(dataSiswa.get(i).getNamaprogram());
         holder.tvLevel.setText("Level " + dataSiswa.get(i).getLevel());
+        Glide.with(activity).load(dataSiswa.get(i).getFoto()).into(holder.ivSiswa);
         holder.cvSiswa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +56,7 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ItemRowHolde
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
         protected TextView tvNama, tvKelas, tvProgram, tvLevel;
-        protected ImageView imgNama, imgKelas, imgProgram, imgLevel;
+        protected ImageView ivSiswa;
         protected CardView cvSiswa;
         public ItemRowHolder(View view) {
             super(view);
@@ -63,10 +65,7 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ItemRowHolde
             this.tvKelas = (TextView) view.findViewById(R.id.tvkelas);
             this.tvProgram = (TextView) view.findViewById(R.id.tvprogram);
             this.tvLevel = (TextView) view.findViewById(R.id.tvlevel);
-            this.imgNama = (ImageView) view.findViewById(R.id.imgnama);
-            this.imgKelas = (ImageView) view.findViewById(R.id.imgkelas);
-            this.imgProgram = (ImageView) view.findViewById(R.id.imgprogram);
-            this.imgLevel = (ImageView) view.findViewById(R.id.imglevel);
+            this.ivSiswa = (ImageView) view.findViewById(R.id.ivsiswa);
             this.cvSiswa = (CardView) view.findViewById(R.id.cvsiswa);
         }
     }

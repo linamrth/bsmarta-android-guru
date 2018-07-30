@@ -110,27 +110,6 @@ public class SiswaFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-////    @Override
-//    public void onBackPressed() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        builder.setMessage("Apakah anda yakin ingin keluar ?")
-//                .setCancelable(false)
-//                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int i) {
-//                        getActivity().finish();
-//                    }
-//                })
-//                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int i) {
-//                        dialog.cancel();
-//                    }
-//                });
-//        AlertDialog alert = builder.create();
-//        alert.show();
-//    }
-
     private void logout(){
         session.setLogin(false, 0, 0);
         getActivity().finish();

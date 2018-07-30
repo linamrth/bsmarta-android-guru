@@ -30,6 +30,7 @@ import retrofit2.http.Query;
 
 public class ApiServices {
     public static String BASE_URL = "http://lina.jagopesan.com/admin/api/";
+    public static String BASE_URL_FOTO = "http://lina.jagopesan.com/admin/images/";
 
     public static PostServices services_post = new Retrofit.Builder()
             .baseUrl(BASE_URL)

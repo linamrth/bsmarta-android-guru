@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.linameritha.myapplication.Fitur.Siswa.DetailsiswaActivity;
 import com.linameritha.myapplication.Model.SemuaSiswa.SemuasiswaModel;
 import com.linameritha.myapplication.Model.Siswa.SiswaModel;
@@ -43,6 +44,7 @@ public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.It
         holder.tvKelas.setText(dataSemuasiswa.get(i).getKelas());
         holder.tvProgram.setText(dataSemuasiswa.get(i).getNamaprogram());
         holder.tvLevel.setText("Level " + dataSemuasiswa.get(i).getLevel());
+        Glide.with(activity).load(dataSemuasiswa.get(i).getFoto()).into(holder.ivSemuasiswa1);
         holder.cvSemuasiswa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +61,7 @@ public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.It
 
     public class ItemRowHolder extends RecyclerView.ViewHolder {
         protected TextView tvNama, tvKelas, tvProgram, tvLevel;
-        protected ImageView imgNama, imgKelas, imgProgram, imgLevel;
+        protected ImageView ivSemuasiswa1;
         protected CardView cvSemuasiswa;
         public ItemRowHolder(View view) {
             super(view);
@@ -68,10 +70,7 @@ public class SemuasiswaAdapter extends RecyclerView.Adapter<SemuasiswaAdapter.It
             this.tvKelas = (TextView) view.findViewById(R.id.tvkelas);
             this.tvProgram = (TextView) view.findViewById(R.id.tvprogram);
             this.tvLevel = (TextView) view.findViewById(R.id.tvlevel);
-            this.imgNama = (ImageView) view.findViewById(R.id.imgnama1);
-            this.imgKelas = (ImageView) view.findViewById(R.id.imgkelas1);
-            this.imgProgram = (ImageView) view.findViewById(R.id.imgprogram1);
-            this.imgLevel = (ImageView) view.findViewById(R.id.imglevel1);
+            this.ivSemuasiswa1 = (ImageView) view.findViewById(R.id.ivsemuasiswa1);
             this.cvSemuasiswa = (CardView) view.findViewById(R.id.cvsemuasiswa);
         }
     }

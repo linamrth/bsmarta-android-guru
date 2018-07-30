@@ -2,10 +2,14 @@ package com.linameritha.myapplication.Model.Profil;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.linameritha.myapplication.Api.ApiServices;
 
 import java.util.ArrayList;
 
 public class ModelProfile {
+    @SerializedName("foto")
+    @Expose
+    private String foto;
     @SerializedName("namaguru")
     @Expose
     private String namaguru;
@@ -21,6 +25,14 @@ public class ModelProfile {
     @SerializedName("program")
     @Expose
     private ArrayList<ModelSkillProfile> program = null;
+
+    public String getFoto() {
+        return ApiServices.BASE_URL_FOTO+foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
     public String getNamaguru() {
         return namaguru;

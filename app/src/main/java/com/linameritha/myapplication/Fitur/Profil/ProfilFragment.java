@@ -17,9 +17,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.linameritha.myapplication.Api.ApiServices;
 import com.linameritha.myapplication.Fitur.LoginForm.LoginForm;
 import com.linameritha.myapplication.Fitur.LoginForm.Session;
@@ -40,13 +42,14 @@ public class ProfilFragment extends Fragment {
     private ModelResultProfile modelResultProfile;
     private ProfilfragmentAdapter profilfragmentAdapter;
     private TextView tvNamaguru,tvNamacabang,tvTelepon,tvAlamat;
+    private ImageView ivProfil;
     private RecyclerView rv;
     Session session;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profil,container, false);
+        final View view = inflater.inflate(R.layout.fragment_profil,container, false);
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
@@ -56,6 +59,7 @@ public class ProfilFragment extends Fragment {
         Log.d("idguru", String.valueOf(sharedPreferences.getInt("idguru",0)));
         rv = (RecyclerView) view.findViewById(R.id.rv);
 
+        ivProfil = view.findViewById(R.id.ivprofilguru);
         tvNamaguru = view.findViewById(R.id.tv_namaguru);
         tvNamacabang = view.findViewById(R.id.tv_namacabang);
         tvTelepon = view.findViewById(R.id.tv_telepon);
@@ -76,6 +80,7 @@ public class ProfilFragment extends Fragment {
                 rv.setAdapter(profilfragmentAdapter);
                 rv.getAdapter().notifyDataSetChanged();
 
+                Glide.with(view).load(modelResultProfile.getResults().getFoto()).into(ivProfil);
                 tvNamaguru.setText(modelResultProfile.getResults().getNamaguru());
                 tvNamacabang.setText(modelResultProfile.getResults().getNamacabang());
                 tvTelepon.setText(modelResultProfile.getResults().getTelepon());
